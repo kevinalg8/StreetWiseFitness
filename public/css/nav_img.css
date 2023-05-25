@@ -1,0 +1,18 @@
+.banner-image{
+    background-image: url(/resources/img/Inicio.jpg);
+    background-size: cover;
+    margin-left: 1%;
+    border-radius: 15px;
+    width: 98%;
+    height: 100vh;
+}
+
+.txt{
+    text-align: left;
+    padding-top: 30%;
+    padding-left: 2%;
+}
+
+.txt button {
+    border-radius: 90px;
+}

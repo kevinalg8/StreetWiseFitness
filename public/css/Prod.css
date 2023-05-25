@@ -1,0 +1,15 @@
+.btn1{
+    font-family: 'Anybody', cursive;
+    height: 45px;
+    width: 35%;
+    border: none;
+    outline: none;
+    background-color: #31095c;
+    color: white;
+    font-weight: 600;
+    border-radius: 60px;
+}
+.btn1:hover{
+    color: #31095c;
+    background-color: white;
+}

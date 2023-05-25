@@ -25,5 +25,5 @@ app.use("/", loginRoute);
 //     res.send("hola")
 // });
 
-
+// module.exports = app;
 export default app;

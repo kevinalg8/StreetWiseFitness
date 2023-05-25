@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
+
+.banner-image{
+     background-image: url(/resources/img/Inicio.jpg);
+     background-size: cover;
+     /* background: linear-gradient(50deg, rgba(0,0,0,1) 0%, rgba(62,0,71,1) 35%, rgba(0,48,57,1) 100%);  */
+    
+}
+.brand {
+     font-family: 'Calistoga', cursive;
+     font-size: 25px;
+}
+

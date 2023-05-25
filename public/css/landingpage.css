@@ -1,0 +1,75 @@
+.c-style{
+    border-radius: 20px;
+}
+.i-style{
+    border-radius: 20px;
+
+}
+.a-links{
+    text-decoration: none;
+    color: white;
+}
+.a-links:hover{
+    text-decoration: none;
+    color: #31095c;
+}
+.btn1, .btn2{
+    font-family: 'Anybody', cursive;
+    height: 45px;
+    width: 35%;
+    border: none;
+    outline: none;
+    background-color: #31095c;
+    color: white;
+    font-weight: 600;
+    border-radius: 60px;
+}
+.btn1:hover, .btn2:hover{
+    color: #31095c;
+    background-color: white;
+}
+.price{
+    font-family: 'Anybody', cursive;
+    font-size: 20px;
+    font-weight: 700;
+}
+.btn2{
+    margin-left: 50%;
+}
+.card:hover{
+    box-shadow: -2px -1px 25px -4px rgba(0,0,0,0.75);
+-webkit-box-shadow: -2px -1px 25px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px -1px 25px -4px rgba(0,0,0,0.75);
+}
+.tsub{
+    font-family: 'Anybody', cursive;
+    color: #8d97ad;
+    line-height: 24px;
+}
+.lists{
+    font-family: 'Anybody', cursive;
+    font-size: 14px;
+}
+.splash{
+    background: rgb(0,0,0);
+    background: linear-gradient(50deg, rgba(0,0,0,1) 0%, rgba(62,0,71,1) 35%, rgba(0,48,57,1) 100%); 
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin-top: 8%;
+}
+.splash::after{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    transform-origin: top left;
+    transform: skewY(-6deg);
+}
+
