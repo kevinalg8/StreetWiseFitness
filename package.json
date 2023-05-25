@@ -1,0 +1,19 @@
+{
+  "name": "sena",
+  "version": "1.0.0",
+  "description": "Proyecto Final SENA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinalg8/StreetWiseFitness.git"
+  },
+  "author": "Sara,Kevin y Jhonatan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinalg8/StreetWiseFitness/issues"
+  },
+  "homepage": "https://github.com/kevinalg8/StreetWiseFitness#readme"
+}
