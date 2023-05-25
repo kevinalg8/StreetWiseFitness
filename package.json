@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Proyecto Final SENA",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon app/index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,22 @@
   "bugs": {
     "url": "https://github.com/kevinalg8/StreetWiseFitness/issues"
   },
-  "homepage": "https://github.com/kevinalg8/StreetWiseFitness#readme"
+  "homepage": "https://github.com/kevinalg8/StreetWiseFitness#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.1",
+    "path": "^0.12.7",
+    "promise-mysql": "^5.2.0",
+    "sweetalert2": "^11.7.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.21.8",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.21.5",
+    "nodemon": "^2.0.22"
+  }
 }
