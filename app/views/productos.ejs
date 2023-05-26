@@ -18,54 +18,23 @@
                 <h1>Our Products</h1>
             </div>
         </div>
-        <%
-        for(i=0; i<=1; i++){
-        %>
+        <% produc.forEach( function (elements){ %>
         <div class="row">
             <div class="col-lg-3 text-center">
                 <div class="card border-0 bg-light">
                     <div class="card-body">
-                        <img src="Icons/cafeina.webp" alt="" class="img-fluid">
+                        <img src="<%= elements.thumbnail %>" alt="" class="img-fluid">
                     </div>
                 </div>
-                <h6>Vergolina</h6>
-                <p>$400</p>
-                <button class="btn1">Buy</button>
+                <h6><%= elements.title %></h6>
+                <p><%= elements.price %></p>
+                <a class="btn1" href="<%= elements.permalink %>">Buy</a>
             </div>
-            <div class="col-lg-3 text-center">
-                <div class="card border-0 bg-light">
-                    <div class="card-body">
-                        <img src="Icons/cafeina.webp" alt="" class="img-fluid">
-                    </div>
-                </div>
-                <h6>Vergolina</h6>
-                <p>$400</p>
-                <button class="btn1">Buy</button>
-            </div>
-            <div class="col-lg-3 text-center">
-                <div class="card border-0 bg-light">
-                    <div class="card-body">
-                        <img src="Icons/cafeina.webp" alt="" class="img-fluid">
-                    </div>
-                </div>
-                <h6>Vergolina</h6>
-                <p>$400</p>
-                <button class="btn1">Buy</button>
-            </div>
-            <div class="col-lg-3 text-center">
-                <div class="card border-0 bg-light">
-                    <div class="card-body">
-                        <img src="Icons/cafeina.webp" alt="" class="img-fluid">
-                    </div>
-                </div>
-                <h6>Vergolina</h6>
-                <p>$400</p>
-                <button class="btn1">Buy</button>
-            </div>
-        </div>
-        <%
-        }
+            <%
+        })
         %>
+        </div>
+
     </div>
 </div>
 <section class="splash" id="SectionAbout">

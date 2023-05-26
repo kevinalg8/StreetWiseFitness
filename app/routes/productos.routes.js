@@ -1,9 +1,11 @@
 import { Router } from "express"
 import fetch from "node-fetch";
+import dotenv  from "dotenv";
 
+
+dotenv.config();
 const productos = Router();
 
-//productos.get('/productos', (req, res)=>{res.render("productos")})
 
 productos.get('/productos', async(req, res)=>{
     try {
@@ -11,15 +13,16 @@ productos.get('/productos', async(req, res)=>{
         let option ={
             method: "GET"
         }
-        let datos = {};
+        let productos = {};
         const respuesta = await fetch(url, option)
         .then(response => response.json())
         .then(data =>{
-            console.log(data);
+            productos = data.results;
         })
         .catch(err =>console.log("error en peticion" +err))
+        // console.log(productos.title);
         res.render("productos",{
-            "datos":datos
+            "produc":productos
         })
     } catch (error) {
         res.redirect("/inicio")
