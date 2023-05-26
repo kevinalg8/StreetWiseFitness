@@ -4,6 +4,7 @@ import ejs from 'ejs';
 import path from 'path';
 import * as url from 'url';
 import loginRoute from './routes/login.routes.js';
+import bodyParser from 'body-parser';
 
 
 dotenv.config();
@@ -17,7 +18,7 @@ app.set("view engine", "ejs");
 
 app.use(express.json());
 app.use(express.static(__dirname + '../public'));
-// app.use(bodyParser.urlencoded({ extended:false }));
+app.use(bodyParser.urlencoded({ extended:false }));
 
 
 app.use("/", loginRoute);

@@ -1,6 +1,6 @@
 import app from "./app.js";
 
-app.listen(app.get("port"),()=>{
-    console.log(`Se a conectado a ${app.get("port")}
-    https://localhost:${app.get("port")}`);
+app.listen(app.get("port"), ()=> {
+    console.log(`Se ha conectado al puerto ${app.get("port")}
+    http://localhost:${app.get("port")}`);
 })
