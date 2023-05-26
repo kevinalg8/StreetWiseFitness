@@ -4,7 +4,8 @@ import ejs from 'ejs';
 import path from 'path';
 import * as url from 'url';
 import loginRoute from './routes/login.routes.js';
-import productRoute from './routes/products.routes.js';
+import inicioRoute from './routes/inicio.routes.js';
+import productosRoute from './routes/productos.routes.js'
 import bodyParser from 'body-parser';
 
 
@@ -23,10 +24,9 @@ app.use(bodyParser.urlencoded({ extended:false }));
 
 
 app.use("/", loginRoute);
-app.get("/productos", productRoute);
-// app.get("/", (req, res)=>{
-//     res.send("hola")
-// });
 
-// module.exports = app;
+app.use("/Inicio", inicioRoute);
+app.get("/productos", productosRoute);
+
+
 export default app;
