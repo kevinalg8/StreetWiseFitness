@@ -19,7 +19,7 @@
             </div>
         </div>
         <% produc.forEach( function (elements){ %>
-        <div class="row">
+        <div class="d-flex flex-row bd-highlight mb-5">
             <div class="col-lg-3 text-center">
                 <div class="card border-0 bg-light">
                     <div class="card-body">
@@ -28,12 +28,13 @@
                 </div>
                 <h6><%= elements.title %></h6>
                 <p><%= elements.price %></p>
-                <a class="btn1" href="<%= elements.permalink %>">Buy</a>
+                <!-- <a class="btn1" href="<%= elements.permalink %>">Buy</a> -->
+                <a href="<%= elements.permalink %>" type="button" class="btn btn-light btn btn-outline-dark">Comprar</a>
             </div>
-            <%
+        </div>
+        <%
         })
         %>
-        </div>
 
     </div>
 </div>
