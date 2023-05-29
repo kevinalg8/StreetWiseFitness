@@ -28,7 +28,7 @@ app.use("/", loginRoute);
 
 app.use("/Inicio", inicioRoute);
 app.get("/productos", productosRoute);
-app.get("/registroUsuario", regUsuarioRoute);
+app.post("/guardar", regUsuarioRoute);
 
 
 export default app;

@@ -1,22 +1,41 @@
 import fetch from "node-fetch";
 
-export const getUsuarios = async(req, res)=>{
-    try {
-        let url = 'http://localhost:3000/api/users';
-        let option ={
-            method: "GET"
+export const insertUsuario = (req, res) => {
+    //if (req.body.NOMBRES && req.body.APELLIDOS && req.body.CORREO && req.body.CELULAR && req.body.FECHA_NACIMIENTO && req.body.CONTRASENA) {
+        let data = {
+            NOMBRES: req.body.NOMBRES,
+            APELLIDOS: req.body.APELLIDOS,
+            CORREO: req.body.CORREO,
+            CELULAR: req.body.CELULAR,
+            FECHA_NACIMIENTO: req.body.FECHA_NACIMIENTO,
+            CONTRASENA: req.body.CONTRASENA
         }
-        let datos = {};
-        const respuesta = await fetch(url,option)
-        .then(response => response.json())
-        .then(data =>
-            console.log(data))
-        .catch(err =>console.log(`Error: ${err}`))
-        res.render("registroUsuario",{
-            "datos":datos
-        })
-    } catch (error) {
-        res.redirect("/login")
-        console.log(`error en ${error}`);
+        let metodo = "POST";
+
+        let url = 'http://localhost:3000/api/users';
+
+        let option = {
+            method: metodo,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }
+        try {
+            const respuesta = fetch(url, option)
+                .then(response => response.json())
+                .then(data =>
+                    //data:data
+                    console.log(`Usuario creado`))
+                .catch(err => console.log(`Error: ${err}`))
+        } catch (error) {
+            console.log(`error en ${error}`);
+        }
+        res.redirect("/inicio")
+
+        /*
+    } else {
+        res.send("error")
     }
+    */
 }
