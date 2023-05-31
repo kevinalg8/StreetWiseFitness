@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
+
+.title{
+    font-family: 'Calistoga', cursive;
+    font-size: 65px;
+}
 .banner-image{
     background-image: url(/img/Inicio.jpg);
     background-size: cover;
