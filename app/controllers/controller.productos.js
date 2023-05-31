@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 
 export const getProductos = async(req,res)=>{
     try {
-        let url = 'https://api.mercadolibre.com/sites/MCO/search?nickname=NUTRITIONEX'
+        let url = 'https://api.mercadolibre.com/sites/MCO/search?nickname=NUTRITIONEX&limit=9'
         let option ={
             method: "GET"
         }

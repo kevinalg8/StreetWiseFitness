@@ -13,6 +13,14 @@
     color: #31095c;
     background-color: white;
 }
+.prods{
+    display: flex;
+    flex-flow: column nowrap;
+    margin-left: 85px;
+}
+.img-p{
+    width: 50%;
+}
 .splash{
     background: rgb(0,0,0);
     background: linear-gradient(50deg, rgba(0,0,0,1) 0%, rgba(62,0,71,1) 35%, rgba(0,48,57,1) 100%); 

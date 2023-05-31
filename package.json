@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/kevinalg8/StreetWiseFitness#readme",
   "dependencies": {
+    "@flaticon/flaticon-uicons": "^2.2.0",
     "body-parser": "^1.20.2",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.9",

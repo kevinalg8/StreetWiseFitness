@@ -1,9 +1,7 @@
-.c-style{
-    border-radius: 20px;
-}
-.i-style{
-    border-radius: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
 
+h1{
+    font-family: 'Calistoga', cursive;
 }
 .a-links{
     text-decoration: none;

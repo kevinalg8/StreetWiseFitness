@@ -12,24 +12,24 @@
     <%- include('partials/navbar.ejs'); %>
     <%- include('partials/nav_img.ejs'); %>
     <div class="product">
-    <div class="container py-3">
+    <div class=" row container-fluid">
         <div class="row py-5">
             <div class="col-lg-5 m-auto text-center">
-                <h1>Our Products</h1>
+                <h1>Productos Sugeridos</h1>
             </div>
         </div>
         <% produc.forEach( function (elements){ %>
-        <div class="d-flex flex-row bd-highlight mb-5">
-            <div class="col-lg-3 text-center">
-                <div class="card border-0 bg-light">
+        <div class="row prods" style="width: 20rem;">
+            <div class="text-center">
+                <div class="card border-0">
                     <div class="card-body">
-                        <img src="<%= elements.thumbnail %>" alt="" class="img-fluid">
+                        <img src="<%= elements.thumbnail %>" alt="" class="img-fluid img-p">
                     </div>
                 </div>
                 <h6><%= elements.title %></h6>
                 <p><%= elements.price %></p>
                 <!-- <a class="btn1" href="<%= elements.permalink %>">Buy</a> -->
-                <a href="<%= elements.permalink %>" type="button" class="btn btn-light btn btn-outline-dark">Comprar</a>
+                <a target="_blank" href="<%= elements.permalink %>" type="button" class="btn btn-light btn btn-outline-dark">Comprar</a>
             </div>
         </div>
         <%

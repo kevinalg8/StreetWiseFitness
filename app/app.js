@@ -10,6 +10,7 @@ import regUsuarioRoute from './routes/registro.user.js'
 import bodyParser from 'body-parser';
 
 
+
 dotenv.config();
 const app = express();
 const __filename = url.fileURLToPath(import.meta.url);
