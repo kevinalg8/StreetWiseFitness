@@ -5,9 +5,11 @@ import path from 'path';
 import * as url from 'url';
 import loginRoute from './routes/login.routes.js';
 import inicioRoute from './routes/inicio.routes.js';
-import productosRoute from './routes/productos.routes.js'
-import regUsuarioRoute from './routes/registro.user.js'
+import productosRoute from './routes/productos.routes.js';
+import regUsuarioRoute from './routes/registro.user.js';
+import adminRoute from './routes/admin.routes.js';
 import bodyParser from 'body-parser';
+
 
 
 
@@ -30,6 +32,7 @@ app.use("/", loginRoute);
 app.use("/Inicio", inicioRoute);
 app.get("/productos", productosRoute);
 app.post("/guardar", regUsuarioRoute);
+app.get("/admin", adminRoute);
 
 
 export default app;
