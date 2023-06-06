@@ -36,19 +36,17 @@ body{
 
   }
 
-  input[type = 'button']{
+  button[type = 'submit']{
     border-radius:100px;
     background-color: rgb(50, 1, 58) ;
     color: white;
-    margin-left: 25%;
     text-decoration: none;
 }
 
-input:hover[type = 'button']{
+  button:hover[type = 'submit']{
     border-radius:100px;
     background-color: rgb(249, 244, 250) ;
     color: rgba(62,0,71,1);
-    margin-left: 25%;
     text-decoration: none;
 }
 

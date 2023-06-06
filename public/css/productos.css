@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
+h1{
+    font-family: 'Calistoga', cursive;
+}
 .btn1{
     font-family: 'Anybody', cursive;
     height: 45px;
@@ -43,5 +47,8 @@
     transform-origin: top left;
     transform: skewY(-2deg);
 }
+
+
+
 
 

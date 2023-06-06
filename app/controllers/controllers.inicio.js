@@ -1,5 +1,4 @@
 import fetch from "node-fetch";
-import passport from "passport-http-bearer";
 import dotenv from "dotenv"
 
 dotenv.config()

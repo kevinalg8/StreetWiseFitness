@@ -11,6 +11,26 @@ h1{
     text-decoration: none;
     color: #31095c;
 }
+.cont-image{
+    background-image: url(/img/inicio3.jpg);
+    background: cover;
+    background-position: center 5%;
+    border-radius: 15px;
+    opacity: 0.8;
+    width: 98%;
+    height: 100vh;    
+}
+.cont-txt{
+    border-radius: 15px;
+}
+.txt-p{
+    padding: 50px;
+    font-size: 55px;
+}
+.txt-pinfo{
+    margin: 45px;
+}
+
 .btn1, .btn2{
     font-family: 'Anybody', cursive;
     height: 45px;
