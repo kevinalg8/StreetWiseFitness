@@ -1,9 +1,10 @@
 import { Router } from "express"
 import * as controllers from "../controllers/controllers.inicio.js"
+import * as controller from "../controllers/controller.login.js"
 
 const login = Router();
 
-login.get('/', (req, res)=>{res.render("login")})
+login.get('/', controller.loginUsuario)
 login.get('/inicio', controllers.getReuniones)
 login.get('/RegistroUsuario', (req, res)=>{res.render("registroUsuario")})
 //login.get('/registroUsuario', controllers.getUsuarios)
