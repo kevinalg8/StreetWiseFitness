@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+
 export const insertUsuario = (req, res) => {
     if (req.body.COD_ROL === "Usuario") {
         let data = {
@@ -29,7 +30,7 @@ export const insertUsuario = (req, res) => {
         } catch (error) {
             console.log(`error en ${error}`);
         }
-        res.redirect("/inicio")
+        res.redirect("/")
     }else{
         let data = {
             NOMBRES: req.body.NOMBRES,
@@ -61,6 +62,6 @@ export const insertUsuario = (req, res) => {
         } catch (error) {
             console.log(`error en ${error}`);
         }
-        res.redirect("/inicio")
+        res.redirect("/")
     }
 }

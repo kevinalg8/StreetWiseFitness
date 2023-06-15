@@ -11,8 +11,6 @@ import adminRoute from './routes/admin.routes.js';
 import bodyParser from 'body-parser';
 
 
-
-
 dotenv.config();
 const app = express();
 const __filename = url.fileURLToPath(import.meta.url);
@@ -27,7 +25,7 @@ app.use(express.static(__dirname + '../public'));
 app.use(bodyParser.urlencoded({ extended:false }));
 
 
-app.use("/", loginRoute);
+app.get("/", loginRoute);
 
 app.use("/Inicio", inicioRoute);
 app.get("/productos", productosRoute);
