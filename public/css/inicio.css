@@ -11,27 +11,172 @@ h1{
     text-decoration: none;
     color: #31095c;
 }
-.cont-image{
-    background-image: url(/img/inicio3.jpg);
-    background: cover;
-    background-position: center 5%;
-    border-radius: 15px;
-    opacity: 0.8;
-    width: 98%;
-    height: 100vh;    
-}
-.cont-txt{
-    border-radius: 15px;
-}
-.txt-p{
-    padding: 50px;
-    font-size: 55px;
-}
-.txt-pinfo{
-    margin: 45px;
+
+.about {
+  background-color: white;
+  margin: 5% auto;
 }
 
-.btn1, .btn2{
+.about .content h3 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  padding: 10px 20px;
+  background: #ecebeb;
+  color: #161516;
+  border-radius: 7px;
+  display: inline-block;
+}
+
+.about .content h2 {
+  color: #161516;
+  font-weight: 700;
+}
+
+.about .content .read-more {
+  background: #31095c;
+  color: #f8f7f7;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 12px 24px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.about .content .read-more i {
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.about .content .read-more:hover {
+  background: #f8f7f7;
+  color: #31095c;
+  padding-right: 19px;
+}
+
+.about .content .read-more:hover i {
+  margin-left: 10px;
+  color: #31095c;
+}
+
+.about .icon-box {
+  padding: 15px 15px;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.about .icon-box i {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  font-size: 32px;
+  line-height: 0;
+  background-color: #31095c;
+  color: #f8f7f7;
+}
+
+.about .icon-box h3 {
+  color: #161516;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.about .icon-box:hover i {
+  background-color: #f8f7f7;
+  color: #31095c;
+  padding-bottom: 15px;
+}
+
+.footer {
+  background-color: #f8f7f7;
+  font-size: 14px;
+}
+
+.footer .footer-top {
+  padding-top: 50px;
+}
+
+.footer .footer-about .logo {
+  line-height: 0;
+  margin-bottom: 25px;
+  text-decoration: none;
+
+}
+
+.footer .footer-about .logo span {
+  color: #31095c;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: 'Calistoga', cursive;
+}
+
+.footer .footer-about p {
+  font-size: 14px;
+}
+
+.footer .social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid;
+  border-color: #f8f7f7;
+  font-size: 16px;
+  color: #31095c;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.footer .social-links a:hover {
+  color: #f8f7f7;
+  background-color: #31095c;
+
+}
+
+.footer h4 {
+  color: #31095c;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer .footer-links {
+  margin-bottom: 30px;
+  text-decoration: none;
+  padding-left: 150px;
+}
+
+.footer .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .footer-links ul a {
+  color: #161516;
+  text-decoration: none;
+}
+
+.btn2{
     font-family: 'Anybody', cursive;
     height: 45px;
     width: 35%;
@@ -42,7 +187,7 @@ h1{
     font-weight: 600;
     border-radius: 60px;
 }
-.btn1:hover, .btn2:hover{
+.btn2:hover{
     color: #31095c;
     background-color: white;
 }
@@ -68,6 +213,24 @@ h1{
     font-family: 'Anybody', cursive;
     font-size: 14px;
 }
+
+.social {
+  margin-top: 15px;
+}
+
+.social a {
+  color: #7e9486;
+}
+
+.social a:hover{
+  color: #31095c;
+}
+
+.social i{
+  font-size: 18px;
+  margin: 0 2px;
+}
+
 .splash{
     background: rgb(0,0,0);
     background: linear-gradient(50deg, rgba(0,0,0,1) 0%, rgba(62,0,71,1) 35%, rgba(0,48,57,1) 100%); 
@@ -88,6 +251,6 @@ h1{
     left: 0;
     bottom: 0;
     transform-origin: top left;
-    transform: skewY(-6deg);
+    transform: skewY(-4deg);
 }
 
