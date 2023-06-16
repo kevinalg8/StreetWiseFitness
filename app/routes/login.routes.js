@@ -10,5 +10,4 @@ login.get('/RegistroUsuario', (req, res)=>{res.render("registroUsuario")})
 //login.get('/registroUsuario', controllers.getUsuarios)
 login.get('/registroEntrenador', (req, res)=>{res.render("registroEntrenador")})
 
-
 export default login;

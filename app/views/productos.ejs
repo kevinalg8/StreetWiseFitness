@@ -2,7 +2,7 @@
 <html lang="en">
 
 <%- include('partials/head.ejs'); %>
-
+<link rel="stylesheet" href="css/footer.css">
 <link rel="stylesheet" href="css/productos.css">
 <title>Productos</title>
 
@@ -11,59 +11,74 @@
     <!-- NavBar -->
     <%- include('partials/navbar.ejs'); %>
     <%- include('partials/nav_img.ejs'); %>
-    <div class="product">
-    <div class=" row container-fluid">
-        <div class="row py-5">
-            <div class="col-lg-5 m-auto text-center">
-                <h1>Productos Sugeridos</h1>
-            </div>
-        </div>
-        <% produc.forEach( function (elements){ %>
-        <div class="row prods" style="width: 20rem;">
-            <div class="text-center">
-                <div class="card border-0">
-                    <div class="card-body">
-                        <img src="<%= elements.thumbnail %>" alt="" class="img-fluid img-p">
-                    </div>
-                </div>
-                <h6><%= elements.title %></h6>
-                <p><%= elements.price %></p>
-                <!-- <a class="btn1" href="<%= elements.permalink %>">Buy</a> -->
-                <a target="_blank" href="<%= elements.permalink %>" type="button" class="btn btn-light btn btn-outline-dark">Comprar</a>
-            </div>
-        </div>
-        <%
-        })
-        %>
 
+    <div id="about" class="about">
+        <div class="container">
+            <h3>Suplementos y equipamento</h3>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="cards-wrapper">
+                        <div class="card">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                          </div>
+                          <div class="card">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                          </div>
+                          <div class="card">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>  
     </div>
-</div>
-<section class="splash" id="SectionAbout">
-    <div class="container">
-      <div class="row justify-content-center mt-5">
-        <div class="col-md-8 text-center text-white">
-          <h3 class="mb-3">Sobre Nosotros</h3>
-          <!-- <p>
-            Somos un equipo comprometido en ofrecerte un gimnasio virtual de calidad. Nuestro objetivo es brindarte entrenamientos efectivos y accesibles a través de sesiones en línea.Con instructores expertos y un enfoque personalizado, estamos aquí para ayudarte a alcanzar tus metas de bienestar y fitness.Únete a nuestra comunidad y descubre una nueva forma de cuidar tu cuerpo y mente desde cualquier lugar. <br> 
-            <strong>¡Bienvenido a nuestro gimnasio virtual!</strong>
-            <ul>
-                <th>Nuetras redes</th>
-                <li>
-                    <a href="">Facebook</a>
-                </li>
-                <li>
-                    <a href="">Gmail</a>
-                </li>
-                <li>
-                    <a href="">Instagram</a>
-                </li>
-            </ul>
-          </p> -->
-        </div>
-      </div>
-    </div>
-  </section>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<%- include('partials/footer.ejs'); %>
+
+
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </html>
+
+<!-- <% produc.forEach( function (elements){ %>
+<div class="row     " style="width: 20rem;">
+    <div class="text-center">
+        <div class="card border-0">
+            <div class="card-body">
+                <img src="<%= elements.thumbnail %>" alt="" class="img-fluid img-p">
+            </div>
+        </div>
+        <h6><%= elements.title %></h6>
+        <p><%= elements.price %></p>
+        <!-- <a class="btn1" href="<%= elements.permalink %>">Buy</a> -->
+        <a target="_blank" href="<%= elements.permalink %>" type="button" class="btn btn-light btn btn-outline-dark">Comprar</a>
+    </div>
+</div>
+<%
+})
+%> -->

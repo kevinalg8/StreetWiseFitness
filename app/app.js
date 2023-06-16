@@ -25,9 +25,9 @@ app.use(express.static(__dirname + '../public'));
 app.use(bodyParser.urlencoded({ extended:false }));
 
 
-app.get("/", loginRoute);
+app.use("/", loginRoute);
 
-app.use("/Inicio", inicioRoute);
+app.use("/inicio", inicioRoute);
 app.get("/productos", productosRoute);
 app.post("/guardar", regUsuarioRoute);
 app.get("/admin", adminRoute);
