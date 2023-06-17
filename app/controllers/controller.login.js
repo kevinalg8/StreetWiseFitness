@@ -18,14 +18,13 @@ export const loginUsuario = async(req, res)=>{
       const resultado = await fetch(ruta, option)
         .then(response => response.json())
         .then(data => {
+          //console.log(data);
           usuarios = data[0];
         })
         .catch(err => console.error("Error en peticion: " + err));
-  
       res.render("login",{
           "users":usuarios
       });
-      console.log(usuarios);
     } catch (error) {
       console.log(error);
     }

@@ -7,6 +7,7 @@ dotenv.config();
 const productos = Router();
 
 productos.get('/productos', controllers.getProductos)
+//productos.get('/productos',controllers.getProductos2)
 
 /* 
 https://api.mercadolibre.com/sites/MCO/search?nickname=NUTRITIONEX
