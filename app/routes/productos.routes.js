@@ -6,7 +6,8 @@ import * as controllers from '../controllers/controller.productos.js'
 dotenv.config();
 const productos = Router();
 
-productos.get('/productos', controllers.getProductos)
+productos.get("/productos", controllers.getProductos)
+//productos.get("/productos", controllers.getProds)
 //productos.get('/productos',controllers.getProductos2)
 
 /* 

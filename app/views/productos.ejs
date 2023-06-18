@@ -10,26 +10,63 @@
     <%- include('partials/navbar.ejs'); %>
     <%- include('partials/nav_img.ejs'); %>
     <div id="about" class="about">
-        <div class="container">
-            <h3><%= tienda.nickname %></h3>
+      <div class="container">
+        <h3><%= tienda.nickname %></h3>
+        <div class="card-group cards-wrapper">
+          <% produc.forEach( function(data1) { %>
+              <div class="card" style="width: 20rem">
+                <img src="<%= data1.thumbnail %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%= data1.title %></h5>
+                  <p class="card-text"><%= data1.price %></p>
+                </div>
+                <div class="card-footer">
+                  <a href="<%= data1.permalink %>" class="btn btn-primary">Comprar</a>
+                </div>
+              </div>
+          <% }); %>
+        </div>
+        <div id="about" class="about">
+          <div class="container">
+          <h3><%= store.nickname %></h3>
             <div class="card-group cards-wrapper">
-              <% produc.forEach( function (elements) { %>
+              <% produ.forEach( function(data2) { %>
+                  <div class="card" style="width: 20rem">
+                    <img src="<%= data2.thumbnail %>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= data2.title %></h5>
+                      <p class="card-text"><%= data2.price %></p>
+                    </div>
+                    <div class="card-footer">
+                      <a href="<%= data2.permalink %>" class="btn btn-primary">Comprar</a>
+                    </div>
+                  </div>
+              <% }); %>
+            </div>
+        </div>
+      </div>
+      <div id="about" class="about">
+        <div class="container">
+        <h3><%= sell.nickname %></h3>
+          <div class="card-group cards-wrapper">
+            <% product.forEach( function(data3) { %>
                 <div class="card" style="width: 20rem">
-                  <img src="<%= elements.thumbnail %>" class="card-img-top" alt="...">
+                  <img src="<%= data3.thumbnail %>" class="card-img-top" alt="...">
                   <div class="card-body">
-                    <h5 class="card-title"><%= elements.title %></h5>
-                    <p class="card-text"><%= elements.price %></p>
+                    <h5 class="card-title"><%= data3.title %></h5>
+                    <p class="card-text"><%= data3.price %></p>
                   </div>
                   <div class="card-footer">
-                    <a href="<%= elements.permalink %>" class="btn btn-primary">Comprar</a>
+                    <a href="<%= data3.permalink %>" class="btn btn-primary">Comprar</a>
                   </div>
                 </div>
-                <%
-                })
-                %>
-            </div>
-        </div>  
+            <% }); %>
+          </div>
+      </div>
     </div>
+
+    
+    
 <%- include('partials/footer.ejs'); %>
 
 
