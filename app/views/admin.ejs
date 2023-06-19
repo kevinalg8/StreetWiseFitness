@@ -15,7 +15,7 @@
   <body>
     <div class="container-fluid">
       <p class="display-1 text-center">Registro de usuarios en el aplicativo</p>
-      <form action="admin">
+      
         <table class="table table-hover">
           <thead>
             <tr>
@@ -25,6 +25,7 @@
               <th scope="col">Estado</th>
               <th scope="col" class="text-center">Fecha Nacimiento</th>
               <th scope="col">Celular</th>
+              <th scope="col">Rol</th>
               <th scope="col">Acción</th>
             </tr>
           </thead>
@@ -38,22 +39,27 @@
                 <% if(elements.ESTADO==1){ %> activo <% }else{ %> inactivo <% }
                 %>
               </td>
-              <td class="text-center"><%= elements.FECHA_NACIMIENTO%></td>
+              <td class="text-center" ><%= elements.FECHA_NACIMIENTO%></td>
               <td><%= elements.CELULAR%></td>
               <td>
+                <% if(elements.COD_ROL==1){ %> Usuario <% }
+                else if(elements.COD_ROL==2){ %> Entrenador <% }
+                else{ %> Administrador <% } %>
+
+              </td>
+              <td>
                 <% if(elements.ESTADO==1){ %>
-                <button type="submit" class="btn btn-danger">
+                <a href="edit-user?id=<%= elements.COD_USUARIO %>&nombre=<%= elements.NOMBRES %>&estado=<%= elements.ESTADO %>" class="btn btn-danger">
                   Inhabilitar
-                </button>
+                </a>
                 <% }else{ %>
-                <button type="submit" class="btn btn-success">Habilitar</button>
+                <a class="btn btn-success"> Habilitar </a>
                 <% } %>
               </td>
             </tr>
             <% }) %>
           </tbody>
         </table>
-      </form>
     </div>
     <p class="display-1 text-center">Planes</p>
 

@@ -17,9 +17,12 @@ export const getUsuarios = async(req, res)=>{
     res.render("admin",{
         "users":usuarios
     });
-    console.log(usuarios);
+    // console.log(usuarios);
   } catch (error) {
     console.log(error);
   }
 };
 
+export const inhabilitar = (req,res)=>{
+  res.send(req.query.id + " nombre: " + req.query.nombre)
+}
