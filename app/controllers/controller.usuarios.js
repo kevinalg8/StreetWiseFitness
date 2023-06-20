@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import jwt from "jsonwebtoken";
 
 export const getUsuarios = async(req, res)=>{
   try {
@@ -46,6 +47,10 @@ export const loginUsuario = async(req, res)=>{
               .catch(err => console.error("Error en peticion: " + err));
               if (usuarios && data) {
                 if (data.CORREO == usuarios.CORREO && data.CONTRASENA == usuarios.CONTRASENA) {
+                  const token = jwt.sign(usuarios, process.env.SECRET_KEY,{
+                    expiresIn:process.env.EXPIRE_TOKEN
+                  });
+                  res.cookie("SWF",token)
                 res.render("inicio",{
                     "user":usuarios
                     //"menu":1
@@ -61,7 +66,6 @@ export const loginUsuario = async(req, res)=>{
         console.log(error);
     }
 }
-
 export const inhabilitar = (req,res)=>{
   res.send(req.query.id + " nombre: " + req.query.nombre)
 }
