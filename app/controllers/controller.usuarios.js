@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-export const getUsuarios = async(req, res)=>{
+export const getUsuarios = async (req, res) => {
   try {
     let ruta = "http://localhost:3000/api/users";
     let option = {
@@ -14,8 +14,8 @@ export const getUsuarios = async(req, res)=>{
       })
       .catch(err => console.error("Error en peticion: " + err));
 
-    res.render("admin",{
-        "users":usuarios
+    res.render("admin", {
+      "users": usuarios
     });
     // console.log(usuarios);
   } catch (error) {
@@ -23,6 +23,9 @@ export const getUsuarios = async(req, res)=>{
   }
 };
 
-export const inhabilitar = (req,res)=>{
-  res.send(req.query.id + " nombre: " + req.query.nombre)
-}
+export const inhabilitar = (req, res) => {
+    let estado = req.query.estado
+
+    let ruta = "http:localhost//3000/api/users/" + req.query.id
+    res.send(ruta+ " ESTADO : "+estado)
+  }

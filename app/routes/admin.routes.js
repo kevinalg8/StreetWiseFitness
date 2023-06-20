@@ -6,6 +6,6 @@ dotenv.config()
 const admin = Router();
 
 admin.get('/admin', controllers.getUsuarios);
-admin.get("/edit-user", controllers.inhabilitar)
+admin.post("/disable-user", controllers.inhabilitar)
 
 export default admin;
