@@ -4,7 +4,8 @@ export const getProductos = async (req, res) => {
   try {
     let url1 = 'https://api.mercadolibre.com/sites/MCO/search?nickname=TUMEJORCOMPRA0&limit=5';
     let url2 = 'https://api.mercadolibre.com/sites/MCO/search?nickname=NUTRITIONEX&limit=5';
-    let url3 = 'https://api.mercadolibre.com/sites/MCO/search?nickname=ENVIOS+SUPLEMENTOS&limit=5'
+    let url3 = 'https://api.mercadolibre.com/sites/MCO/search?nickname=ENVIOS+SUPLEMENTOS&limit=5';
+    let url4 = 'https://api.mercadolibre.com/sites/MCO/search?nickname=FITSHOPCOL&limit=5';
 
     let option = {
       method: "GET"
@@ -22,20 +23,28 @@ export const getProductos = async (req, res) => {
     const data3 = await response3.json();
     console.log(data3);
 
-    let productos = data1.results;
-    let vendedor = data1.seller;
-    let prod = data2.results;
-    let seller = data2.seller;
-    let product = data3.results;
-    let sell = data3.seller;
+    const response4 = await fetch(url4, option);
+    const data4 = await response4.json();
+    console.log(data4);
+
+    let productos1 = data1.results;
+    let vendedor1 = data1.seller;
+    let productos2 = data2.results;
+    let vendedor2 = data2.seller;
+    let productos3 = data3.results;
+    let vendedor3 = data3.seller;
+    let productos4 = data4.results;
+    let vendedor4 = data4.seller; 
 
     res.render("productos", {
-      "produc": productos,
-      "tienda": vendedor,
-      "produ": prod,
-      "store": seller,
-      "product": product,
-      "sell": sell 
+      "produc1": productos1,
+      "seller1": vendedor1,
+      "produc2": productos2,
+      "seller2": vendedor2,
+      "produc3": productos3,
+      "seller3": vendedor3,
+      "produc4": productos4,
+      "seller4": vendedor4
     });
 
   } catch (error) {
