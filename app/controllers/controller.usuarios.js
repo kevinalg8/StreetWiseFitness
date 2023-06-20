@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import jwt from "jsonwebtoken";
 
 export const getUsuarios = async (req, res) => {
   try {
@@ -56,3 +57,4 @@ export const inhabilitar = async(req, res) => {
       console.log(error);
   }
 }
+

@@ -5,10 +5,15 @@ import path from 'path';
 import * as url from 'url';
 import loginRoute from './routes/login.routes.js';
 import inicioRoute from './routes/inicio.routes.js';
-import productosRoute from './routes/productos.routes.js';
+//import productosRoute from './routes/productos.routes.js';
 import regUsuarioRoute from './routes/registro.user.js';
+import planesRoute from './routes/planes.routes.js';
 import adminRoute from './routes/admin.routes.js';
+import authRoute from './routes/login.routes.js';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import jsonwebtoken from 'jsonwebtoken'
+//import middleware from './middlewares/middleware.js'
 
 
 dotenv.config();
@@ -22,16 +27,14 @@ app.set("view engine", "ejs");
 
 app.use(express.json());
 app.use(express.static(__dirname + '../public'));
-app.use(bodyParser.urlencoded({ extended:false }));
+//Ensayar quitar
+app.use(cookieParser())
+//app.use(middleware())
+app.use(express.urlencoded({ extended:false }));
 
 
-app.use("/", loginRoute);
+app.use("/",loginRoute);
 
-app.use("/inicio", inicioRoute);
-app.get("/productos", productosRoute);
-app.post("/guardar", regUsuarioRoute);
-app.get("/admin", adminRoute);
-app.post("/disable-user", adminRoute)
-
+app.use("/",inicioRoute);
 
 export default app;
