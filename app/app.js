@@ -8,7 +8,10 @@ import inicioRoute from './routes/inicio.routes.js';
 import productosRoute from './routes/productos.routes.js';
 import regUsuarioRoute from './routes/registro.user.js';
 import adminRoute from './routes/admin.routes.js';
+import authRoute from './routes/login.routes.js';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import jsonwebtoken from 'jsonwebtoken'
 
 
 dotenv.config();
@@ -22,11 +25,12 @@ app.set("view engine", "ejs");
 
 app.use(express.json());
 app.use(express.static(__dirname + '../public'));
-app.use(bodyParser.urlencoded({ extended:false }));
+app.use(cookieParser())
+app.use(express.urlencoded({ extended:false }));
 
 
-app.use("/", loginRoute);
-
+app.use("/",loginRoute);
+app.post("/auth",authRoute);
 app.use("/inicio", inicioRoute);
 app.get("/productos", productosRoute);
 app.post("/guardar", regUsuarioRoute);
