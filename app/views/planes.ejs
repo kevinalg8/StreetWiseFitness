@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('partials/head.ejs'); %>
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/planes.css">
+    <%- include('./partials/head.ejs'); %>
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/planes.css">
     <title>Planes</title>
 </head>
 <body>
-    <%- include('partials/navbar.ejs'); %>
-    <%- include('partials/nav_img.ejs'); %>
+    <%- include('./partials/navbar.ejs'); %>
+    <%- include('./partials/nav_img.ejs'); %>
 
     <h3>Nuestro Entrenador</h3>
-    <div class="container mt-5 plans">
+    <div class="container-fluid plans">
         <div class="row">
             <div class="col-lg-5" style="min-height: 500px;">
                 <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100 rounded" src="img/sandra.jpg" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100 rounded" src="../img/sandra.jpg" style="object-fit: cover;">
                 </div>
             </div>
             <div class="col-lg-6 info">
@@ -30,9 +30,10 @@
             </div>
         </div>
     </div>
-    
-
-    <%- include('partials/footer.ejs'); %>
+    <%- include('./partials/footer.ejs'); %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
 </body>
 </html>

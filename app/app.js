@@ -6,8 +6,6 @@ import * as url from 'url';
 import loginRoute from './routes/login.routes.js';
 import homeRoute from './routes/inicio.routes.js';
 //import productosRoute from './routes/productos.routes.js';
-import adminRoute from './routes/admin.routes.js';
-import authRoute from './routes/login.routes.js';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 

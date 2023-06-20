@@ -5,7 +5,7 @@ export const validateToken = (req, res, next)=>{
         const token = jwt.verify(req.cookies.SWF, process.env.SECRET_KEY)
          if (token) {
             console.log("Holaaaa");
-            res.render("inicio",{
+            res.render("productos",{
                 "menu":1
             })
             next()
