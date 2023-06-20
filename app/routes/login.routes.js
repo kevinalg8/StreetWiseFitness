@@ -3,6 +3,7 @@ import { Router } from "express"
 import * as controllers from "../controllers/controller.usuarios.js"
 import {validateToken} from '../middlewares/middleware.js'
 
+
 const login = Router();
 
 login.get('/', (req, res)=>{res.render("login")})

@@ -68,4 +68,6 @@ export const loginUsuario = async(req, res)=>{
 }
 export const inhabilitar = (req,res)=>{
   res.send(req.query.id + " nombre: " + req.query.nombre)
-}
+};
+
+
