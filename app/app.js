@@ -35,6 +35,7 @@ app.use("/inicio", inicioRoute);
 app.get("/productos", productosRoute);
 app.post("/guardar", regUsuarioRoute);
 app.get("/admin", adminRoute);
+app.get("/edit-user", adminRoute)
 
 
 export default app;
