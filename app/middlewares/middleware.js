@@ -8,10 +8,10 @@ export const validateToken = (req, res, next)=>{
             res.render("inicio",{
                 "menu":1
             })
+            next()
          }else{
             res.redirect("login")
          }
-         next()
      } catch (error) {
         console.log("error verificando"+error);
      }
