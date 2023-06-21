@@ -13,19 +13,18 @@ export const getProductos = async (req, res) => {
 
     const response1 = await fetch(url1, option);
     const data1 = await response1.json();
-    console.log(data1);
+    //console.log(data1);
 
     const response2 = await fetch(url2, option);
     const data2 = await response2.json();
-    console.log(data2);
+    //console.log(data2);
 
     const response3 = await fetch(url3, option);
     const data3 = await response3.json();
-    console.log(data3);
+    //console.log(data3);
 
     const response4 = await fetch(url4, option);
     const data4 = await response4.json();
-    console.log(data4);
 
     let productos1 = data1.results;
     let vendedor1 = data1.seller;

@@ -3,17 +3,15 @@ import jwt from 'jsonwebtoken'
 export const validateToken = (req, res, next)=>{
      try {
         const token = jwt.verify(req.cookies.SWF, process.env.SECRET_KEY)
-         if (token) {
-            console.log("Holaaaa");
-            res.render("productos",{
-                "menu":1
-            })
-            next()
+        if (token) {
+            //console.log(req.cookies);
+            res.render("planes")
          }else{
-            res.redirect("login")
+            res.redirect("registroUsuario")
          }
      } catch (error) {
-        console.log("error verificando"+error);
+         res.redirect("../")
+         console.log(error);
      }
 };
 //export default validateToken;

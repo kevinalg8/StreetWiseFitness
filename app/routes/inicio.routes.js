@@ -4,10 +4,8 @@ import {validateToken} from '../middlewares/middleware.js'
 
 const inicio = Router();
 
-//inicio.get('/', (req, res)=>{res.render("login")})
-//inicio.post('/auth', controller.loginUsuario)
 inicio.get('/inicio', (req, res)=>{res.render("inicio")})
-inicio.get('/productos',controller.getProductos)
-inicio.get('/planes',(req, res)=>{res.render("planes")})
+inicio.get('/productos',validateToken,controller.getProductos)
+inicio.get('/planes',validateToken,(req,res)=>{res.render("planes")})
 
 export default inicio;

@@ -51,9 +51,9 @@ export const loginUsuario = async(req, res)=>{
                     expiresIn:process.env.EXPIRE_TOKEN
                   });
                   res.cookie("SWF",token)
-                res.render("inicio",{
-                    "user":usuarios
-                    //"menu":1
+                  res.render("inicio",{
+                    "user":usuarios,
+                    "menu":1
                   });
                   console.log(usuarios);
                 }else{
@@ -65,7 +65,7 @@ export const loginUsuario = async(req, res)=>{
             } catch (error) {
         console.log(error);
     }
-}
+  };
 export const inhabilitar = async(req, res) => {
   let estado= req.query.estado
   if (estado == 1) {
@@ -99,5 +99,69 @@ export const inhabilitar = async(req, res) => {
       console.log(error);
   }
 };
+export const insertUsuario = async(req, res) => {
+  if (req.body.COD_ROL === "Usuario") {
+      let data = {
+          NOMBRES: req.body.NOMBRES,
+          APELLIDOS: req.body.APELLIDOS,
+          CORREO: req.body.CORREO,
+          CELULAR: req.body.CELULAR,
+          FECHA_NACIMIENTO: req.body.FECHA_NACIMIENTO,
+          CONTRASENA: req.body.CONTRASENA,
+          COD_ROL: 1
+      }
+      let metodo = "POST";
+      let url = 'http://localhost:3000/api/users';
+      let option = {
+          method: metodo,
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+      }
+      try {
+          const respuesta = await fetch(url, option)
+              .then(response => response.json())
+              .then(data =>
+                  //data:data
+                  console.log(`Usuario creado`))
+                  .catch(err => console.log(`Error: ${err}`))
+                  res.render("registroUsuario")
+      } catch (error) {
+          console.log(`error en ${error}`);
+      }
+  }else{
+      let data = {
+          NOMBRES: req.body.NOMBRES,
+          APELLIDOS: req.body.APELLIDOS,
+          CORREO: req.body.CORREO,
+          CELULAR: req.body.CELULAR,
+          FECHA_NACIMIENTO: req.body.FECHA_NACIMIENTO,
+          CONTRASENA: req.body.CONTRASENA,
+          COD_ROL: 2
+      }
+      console.log(data);
+      let metodo = "POST";
+      let url = 'http://localhost:3000/api/users';
 
+      let option = {
+          method: metodo,
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+      }
+      try {
+          const respuesta = await fetch(url, option)
+              .then(response => response.json())
+              .then(data =>
+                  //data:data
+                  console.log(`Entrenador creado`))
+              .catch(err => console.log(`Error: ${err}`))
+      } catch (error) {
+          console.log(`error en ${error}`);
+      }
+      res.redirect("/")
+  }
+}
 
