@@ -28,8 +28,8 @@
         </tr>
       </thead>
       <tbody>
-        <% users.forEach(function(elements){ %>
-          <form action="disable-user?id=<%= elements.COD_USUARIO %>&estado=<%= elements.ESTADO%>" method="post">
+        <% users.forEach((elements)=>{ %>
+          <form action="../inicio/disable-user?id=<%= elements.COD_USUARIO %>&estado=<%= elements.ESTADO%>" method="POST">
             <tr>
               <th scope="row">
                 <%= elements.COD_USUARIO %>

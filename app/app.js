@@ -5,7 +5,6 @@ import path from 'path';
 import * as url from 'url';
 import loginRoute from './routes/login.routes.js';
 import homeRoute from './routes/inicio.routes.js';
-//import productosRoute from './routes/productos.routes.js';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
@@ -27,7 +26,6 @@ app.use(cookieParser())
 //app.use(middleware())
 app.use(bodyParser.urlencoded({ extended:false }));
 
-
 app.use("/",loginRoute);
-app.use("/home",homeRoute);
+app.use("/inicio",homeRoute);
 export default app;
