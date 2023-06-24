@@ -1,6 +1,8 @@
 import fetch from "node-fetch";
 import jwt from "jsonwebtoken";
 
+
+
 export const getUsuarios = async (req, res) => {
   try {
     let ruta = "http://localhost:3000/api/users";
@@ -24,10 +26,9 @@ export const getUsuarios = async (req, res) => {
   }
 };
 
-
 export const loginUsuario = async (req, res) => {
   try {
-    let data = {
+    let dataLogin = {
       CORREO: req.body.CORREO,
       CONTRASENA: req.body.CONTRASENA
     }
@@ -37,31 +38,30 @@ export const loginUsuario = async (req, res) => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(dataLogin)
     };
-    console.log(data);
-    let datos = {};
+    let datosDb = {};
     const resultado = await fetch(ruta, option)
       .then(response => response.json())
-      .then(data => {
-        datos = data[0];
+      .then(dataLogin => {
+        datosDb = dataLogin[0];
       })
       .catch(err => console.error("Error en peticion: " + err));
-    if (datos && data) {
-      if (data.CORREO == datos.CORREO && data.CONTRASENA == datos.CONTRASENA) {
-        const token = jwt.sign(datos, process.env.SECRET_KEY, {
+      if (datosDb && dataLogin) {
+      if (dataLogin.CORREO === datosDb.CORREO && dataLogin.CONTRASENA === datosDb.CONTRASENA) {
+        const token = jwt.sign(datosDb, process.env.SECRET_KEY, {
           expiresIn: process.env.EXPIRE_TOKEN
         });
         res.cookie("SWF", token)
-        if (datos.ESTADO == 1) {
-          if (datos.COD_ROL == 1) {
+        if (datosDb.ESTADO == 1) {
+          if (datosDb.COD_ROL == 1) {
             res.render("inicio", {
-              "user": datos,
-              "rol": datos.COD_ROL,
-              "menu": 1
+              "user": datosDb,
+              "rol": datosDb.COD_ROL
             });
           }
-          if (datos.COD_ROL == 3) {
+          console.log(dataLogin);
+          if (datosDb.COD_ROL == 3) {
             try {
               let ruta = "http://localhost:3000/api/users";
               let option = {
@@ -74,21 +74,23 @@ export const loginUsuario = async (req, res) => {
                   usuarios = data[0];
                 })
                 .catch(err => console.error("Error en peticion: " + err));
-
+                console.log(usuarios);
+                
               res.render("admin", {
                 "users": usuarios
               });
-              // console.log(usuarios);
             } catch (error) {
               console.log(error);
             }
           }
-          console.log(datos)
+          console.log(datosDb)
         }else{
           console.log("Usuario Inhabilitado");
         }
       }
+      console.log(dataLogin,comparacionEncriptacion);
     } else {
+      //console.log(dataLogin,comparacionEncriptacion);
       res.redirect("/registroUsuario")
     }
   } catch (error) {
