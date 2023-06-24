@@ -12,47 +12,41 @@
 
 <body>
   <div class="container-fluid">
-    <p class="display-1 text-center">Registro de usuarios en el aplicativo</p>
+    <p class="display-1 text-center">Registro de planes en el aplicativo</p>
 
     <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Estado</th>
-          <th scope="col" class="text-center">Fecha Nacimiento</th>
-          <th scope="col">Celular</th>
-          <th scope="col">Rol</th>
-          <th scope="col">Acción</th>
+          <th scope="col">Codigo</th>
+          <th scope="col">usuario</th>
+          <th scope="col">Correo</th>
+          <th scope="col">plan</th>
+          <th scope="col" class="text-center">Nombre</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Accion</th>
         </tr>
       </thead>
       <tbody>
-        <% users.forEach((elements)=>{ %>
-          <form action="../inicio/disable-user?id=<%= elements.COD_USUARIO %>&estado=<%= elements.ESTADO%>" method="POST">
+        <% plans.forEach((elements)=>{ %>
+          <form action="" method="POST">
             <tr>
               <th scope="row">
-                <%= elements.COD_USUARIO %>
+                <%= elements.COD_USERPLAN %>
               </th>
               <td>
-                <%= elements.NOMBRES %>
+                <%= elements.COD_USUARIO %>
               </td>
               <td>
-                <%= elements.APELLIDOS %>
+                <%= elements.CORREO %>
               </td>
               <td>
-                <% if(elements.ESTADO==1){ %> activo <% }else{ %> inactivo <% } %>
+                <%= elements.COD_PLAN %>
               </td>
               <td class="text-center">
-                <%= elements.FECHA_NACIMIENTO%>
+                <%= elements.NOMBRE%>
               </td>
               <td>
-                <%= elements.CELULAR%>
-              </td>
-              <td>
-                <% if(elements.COD_ROL==1){ %> Usuario <% } else if(elements.COD_ROL==2){ %> Entrenador <% } else{ %>
-                      Administrador <% } %>
-
+                <%= elements.DESCRIPCION%>
               </td>
               <td>
                 <% if(elements.ESTADO==1){ %>
