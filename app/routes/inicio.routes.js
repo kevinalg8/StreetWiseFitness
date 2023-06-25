@@ -7,7 +7,7 @@ const inicio = Router();
 
 inicio.get('/', (req, res)=>{res.render("inicio")})
 inicio.get('/productos',controller.getProductos)
-inicio.get('/planes',validateToken,(req,res)=>{res.render("planes")})
+inicio.get('/planes',(req,res)=>{res.render("planes")})
 inicio.get('/recetasDeLaComunidad',(req,res)=>{res.render("recipes")})
 inicio.get('/admin',controllers.getUsuarios)
 inicio.post('/disable-user',controllers.inhabilitar)

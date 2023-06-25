@@ -20,3 +20,54 @@ h3{
     font-size: 18px;
 }
 
+.features{
+    margin-top: 50px;
+    margin-right: 100px;
+}
+  .features .features-item .btn-get-started {
+    background-color: #31095c;
+    color: #ecebeb;
+    margin-left: 50px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+  
+  .features .features-item .btn-get-started:hover {
+    background-color: #ecebeb;
+    color: #31095c;
+  }
+  
+  .features .features-item ul li {
+    padding-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .features .features-item ul i {
+    font-size: 20px;
+    padding-right: 4px;
+    color: #31095c;
+  }
+  
+  .features .features-item img {
+    border-radius: 10px;
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .features .features-item .features-img-bg {
+    position: relative;
+  }
+
+  .features .features-item .features-img-bg img {
+    position: absolute;
+
+    object-fit: cover;
+  }
+

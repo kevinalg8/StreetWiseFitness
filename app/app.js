@@ -12,15 +12,18 @@ import cookieParser from 'cookie-parser';
 
 dotenv.config();
 const app = express();
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+//const __filename = url.fileURLToPath(import.meta.url);
+//const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+const __dirname = path.resolve();
 
 app.set("port", process.env.PORT || 9999);
-app.set("views", path.join(__dirname, "views"));
+//app.set("views", path.join(__dirname, "views"));
+app.set("views",path.resolve(path.join(__dirname, "app", "views")));
+console.log("views",path.resolve(path.join(__dirname, "app", "views")));
 app.set("view engine", "ejs");
 
 app.use(express.json());
-app.use(express.static(__dirname + '../public'));
+app.use(express.static(__dirname + '/public'));
 //Ensayar quitar
 app.use(cookieParser())
 //app.use(middleware())
