@@ -1,8 +1,6 @@
 import fetch from "node-fetch";
 import jwt from "jsonwebtoken";
 
-
-
 export const getUsuarios = async (req, res) => {
   try {
     let ruta = "http://localhost:3000/api/users";

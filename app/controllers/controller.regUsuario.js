@@ -1,5 +1,4 @@
 import fetch from "node-fetch";
-import bycript from 'bcrypt'
 
 export const insertUsuario =(req, res) => {
     if (req.body.COD_ROL === "Usuario") {

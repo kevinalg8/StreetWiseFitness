@@ -7,16 +7,16 @@ exports.validateToken = void 0;
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var validateToken = function validateToken(req, res, next) {
-  try {
-    var token = _jsonwebtoken["default"].verify(req.cookies.SWF, process.env.SECRET_KEY);
-    if (token) {
-      //console.log(req.cookies);
+  if (req.cookies.SWF) {
+    try {
+      var token = _jsonwebtoken["default"].verify(req.cookies.SWF, process.env.SECRET_KEY);
       next();
-    } else {
-      res.redirect("registroUsuario");
+    } catch (error) {
+      console.log(error);
+      //res.redirect("registroUsuario")     
     }
-  } catch (error) {
-    console.log(error);
+  } else {
+    res.redirect("/registroUsuario");
   }
 };
 exports.validateToken = validateToken;

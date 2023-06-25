@@ -17,6 +17,7 @@ var insertUsuario = function insertUsuario(req, res) {
       CONTRASENA: req.body.CONTRASENA,
       COD_ROL: 1
     };
+    //let encriptar = bycript.hash(data.CONTRASENA, 8)
     var metodo = "POST";
     var url = process.env.API_UTL + '/users';
     var option = {
