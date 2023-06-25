@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
+import bycript from 'bcrypt'
 
-export const insertUsuario = (req, res) => {
+export const insertUsuario =(req, res) => {
     if (req.body.COD_ROL === "Usuario") {
         let data = {
             NOMBRES: req.body.NOMBRES,
@@ -11,6 +12,7 @@ export const insertUsuario = (req, res) => {
             CONTRASENA: req.body.CONTRASENA,
             COD_ROL: 1
         }
+        //let encriptar = bycript.hash(data.CONTRASENA, 8)
         let metodo = "POST";
         let url = process.env.API_UTL + '/users';
         let option = {
