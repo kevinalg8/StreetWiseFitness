@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 
 export const getUsuarios = async (req, res) => {
   try {
-    let ruta = "http://localhost:3000/api/users";
+    let ruta = process.env.API_URL + '/users';
     let option = {
       method: "GET"
     };
@@ -30,7 +30,7 @@ export const loginUsuario = async (req, res) => {
       CORREO: req.body.CORREO,
       CONTRASENA: req.body.CONTRASENA
     }
-    let ruta = "http://localhost:3000/api/consult";
+    let ruta = process.env.API_URL + '/consult';
     let option = {
       method: "POST",
       headers: {
@@ -61,7 +61,7 @@ export const loginUsuario = async (req, res) => {
           console.log(dataLogin);
           if (datosDb.COD_ROL == 3) {
             try {
-              let ruta = "http://localhost:3000/api/users";
+              let ruta = process.env.API_URL + '/users';
               let option = {
                 method: "GET"
               };
@@ -86,7 +86,7 @@ export const loginUsuario = async (req, res) => {
           console.log("Usuario Inhabilitado");
         }
       }
-      console.log(dataLogin,comparacionEncriptacion);
+      console.log(dataLogin);
     } else {
       //console.log(dataLogin,comparacionEncriptacion);
       res.redirect("/registroUsuario")

@@ -13,7 +13,7 @@ export const insertUsuario =(req, res) => {
         }
         //let encriptar = bycript.hash(data.CONTRASENA, 8)
         let metodo = "POST";
-        let url = process.env.API_UTL + '/users';
+        let url = process.env.API_URL + '/users';
         let option = {
             method: metodo,
             headers: {
@@ -44,7 +44,7 @@ export const insertUsuario =(req, res) => {
         }
         console.log(data);
         let metodo = "POST";
-        let url = process.env.API_UTL + '/users';
+        let url = process.env.API_URL + '/users';
 
         let option = {
             method: metodo,
