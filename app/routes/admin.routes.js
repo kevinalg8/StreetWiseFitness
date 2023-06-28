@@ -15,5 +15,6 @@ admin.get('/planes', planControllers.getPlanes)
 admin.get('/receta', recetaControllers.getReceta)
 
 admin.post('/generarPdf', controllers.generarPdf)
+admin.post('/generarExcel', controllers.generarExcel)
 
 export default admin;
