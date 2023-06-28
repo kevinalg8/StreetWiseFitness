@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrador</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+</head>
+<%- include('partials/navbar.admin.ejs'); %>
+<body>
+  <div class="container-fluid">
+    <p class="display-1 text-center">Registro de Recetas en el aplicativo</p>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Codigo</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">ID usuario</th>
+          <th scope="col" class="text-center">Correo</th>
+          <th scope="col" class="text-center">Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% recipes.forEach((elements)=>{ %>
+          <form action="" method="POST">
+            <tr>
+                <th scope="row">
+                    <%= elements.COD_RECETA %>
+                  </th>
+              <th scope="row">
+                <%= elements.NOMBRE %>
+              </th>
+              <td>
+                <%= elements.DESCRIPCION %>
+              </td>
+              <td>
+                <%= elements.COD_USUARIO %>
+              </td>
+              <td>
+                <%= elements.CORREO %>
+              </td>
+              <td>
+                <% if(elements.ESTADO==1){ %>
+                  <input value="Inhabilitar" class="btn btn-danger" type="submit">
+                    
+                  </input>
+                  <% }else{ %>
+                    <input class="btn btn-success" type="submit" value="Habilitar">  </input>
+                    <% } %>
+              </td>
+            </tr>
+          </form>
+            <% }) %>
+        </tbody>
+    </table>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
