@@ -51,5 +51,85 @@ export const getProductos = async (req, res) => {
     console.log(error);
   }
 }
+//Inferior
+export const getProdinf = async (req, res) => {
+  try {
+    let url1 = 'https://api.mercadolibre.com/sites/MCO/search?nickname=FITNES+MARKET&limit=5';
 
+    let option = {
+      method: "GET"
+    };
+
+    const response = await fetch(url1, option);
+    const data = await response.json();
+    console.log(data);
+
+    let productos = data.results;
+    let vendedor = data.seller;
+
+
+    res.render("trenInferior", {
+      "produc1": productos,
+      "seller1": vendedor,
+    });
+
+  } catch (error) {
+    res.redirect("/inicio");
+    console.log(error);
+  }
+}
+//Superior
+export const getProdsup = async (req, res) => {
+  try {
+    let url2 = 'https://api.mercadolibre.com/sites/MCO/search?nickname=NATURFITCOL+SUPLEMENTOS&limit=5';
+
+    let option = {
+      method: "GET"
+    };
+
+    const response = await fetch(url2, option);
+    const data = await response.json();
+    console.log(data);
+
+    let productos = data.results;
+    let vendedor = data.seller;
+
+
+    res.render("trenSuperior", {
+      "produc2": productos,
+      "seller2": vendedor,
+    });
+
+  } catch (error) {
+    res.redirect("/inicio");
+    console.log(error);
+  }
+}
+//General
+export const getProdgen = async (req, res) => {
+  try {
+    let url3 = 'https://api.mercadolibre.com/sites/MCO/search?nickname=GOLI5769558&limit=5';
+
+    let option = {
+      method: "GET"
+    };
+
+    const response = await fetch(url3, option);
+    const data = await response.json();
+    console.log(data);
+
+    let productos = data.results;
+    let vendedor = data.seller;
+
+
+    res.render("planGeneral", {
+      "produc3": productos,
+      "seller3": vendedor,
+    });
+
+  } catch (error) {
+    res.redirect("/inicio");
+    console.log(error);
+  }
+}
   
