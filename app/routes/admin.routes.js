@@ -10,5 +10,6 @@ admin.get('/CrearPlanes',(req,res)=>{res.render("createPlan")})
 admin.post('/CrearElPlan',planControllers.createPlanes)
 admin.post('/disable-user',controllers.inhabilitar)
 admin.get('/cerrarSesion',controllers.cerrarSesion)
+admin.get('/plans', planControllers.getPlanes)
 
 export default admin;
