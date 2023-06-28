@@ -14,4 +14,6 @@ admin.get('/cerrarSesion',controllers.cerrarSesion)
 admin.get('/planes', planControllers.getPlanes)
 admin.get('/receta', recetaControllers.getReceta)
 
+admin.post('/generarPdf', controllers.generarPdf)
+
 export default admin;

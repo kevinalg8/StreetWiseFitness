@@ -1,5 +1,7 @@
 import fetch from "node-fetch";
 import jwt from "jsonwebtoken";
+import axios from "axios";
+import PDFDocument from "pdfkit-table";
 
 export const getUsuarios = async (req, res) => {
   try {
@@ -132,7 +134,7 @@ export const inhabilitar = async (req, res) => {
 
 export const alerta = (req,res)=>{
   let Alerta = req.query.error
-  console.log(Alerta)
+  console.log(req.query.error)
   res.render("login",{Alert:Alerta})
 }
 
@@ -141,3 +143,73 @@ export const cerrarSesion = (req,res)=>{
   res.redirect("/");
 }
 
+export const generarPdf = async (req, res) => {
+  try {
+    // Hacer una solicitud GET a la API para obtener la información
+    const response = await axios.get(process.env.API_URL + '/users');
+    const usuarioslData = response.data[0]; // Obtener el primer elemento del arreglo
+
+    // Crear un nuevo documento PDF
+    const doc = new PDFDocument({ margin: 30, size: 'A4' });
+
+    // Stream el contenido PDF a la respuesta HTTP
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename=usuarios.pdf');
+    doc.pipe(res);
+
+    // Agregar el logo del proyecto
+    // const logoHeight = 50;
+    // const logoWidth = 50;
+    // const __dirname = path.resolve()
+    // const imagePath = path.resolve(path.join(__dirname, 'public', 'img', 'logoSena.png')) ;
+    // const logoX = (pageWidth - logoWidth) / 2;
+    // const logoY = 30;
+
+    const pageWidth = doc.page.width;
+    const pageHeight = doc.page.height;
+
+
+    // doc.image(imagePath, logoX, logoY, { width: logoWidth, height: logoHeight });
+
+    // Agregar espacio después de la imagen
+    doc.moveDown(2);
+
+    // Agregar el encabezado
+    doc.fontSize(24).text('Registro de usuarios', { align: 'center' });
+
+    // Agregar espacio después del encabezado
+    doc.moveDown();
+
+    // Crear la tabla
+    const table = {
+      headers: ['ID', 'NOMBRE', 'APELLIDO', 'FECHA', 'CORREO', 'ROOL', 'ESTADO', 'CELULAR', 'CONTRASEÑA'],
+      rows: usuarioslData.map(usuarios => [
+        usuarios.COD_USUARIO,
+        usuarios.NOMBRES,
+        usuarios.APELLIDOS,
+        usuarios.FECHA_NACIMIENTO,
+        usuarios.CORREO,
+        usuarios.COD_ROL,
+        usuarios.ESTADO,
+        usuarios.CELULAR,
+        usuarios.CONTRASENA
+      ])
+    };
+
+    // Agregar la tabla al documento con un tamaño de letra más pequeño
+    await doc.table(table, { width: 500, prepareHeader: () => doc.font('Helvetica-Bold').fontSize(10), prepareRow: () => doc.font('Helvetica').fontSize(10) });
+
+    // Agregar el pie de página
+    const generador = 'StreetWise';
+    const fechaImpresion = new Date().toLocaleString();
+    doc.fontSize(10).text(`Generado por: ${generador}`);
+    doc.fontSize(10).text(`Fecha y hora de impresión: ${fechaImpresion}`, { align: 'right' });
+
+    // Finalizar el PDF
+    doc.end();
+  } catch (error) {
+    // Manejar errores de solicitud o cualquier otro error
+    console.error(error);
+    res.status(500).send('Error al generar el PDF');
+  }
+};
