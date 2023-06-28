@@ -6,7 +6,7 @@
 <title>Inicio</title>
 
 <body>
-  <% if(rol === 1){ %>
+  <% if(rol === 1 || rol === 2){ %>
     <%- include('partials/navbar.ejs'); %>
   <% } %>
     <%- include('partials/nav_img.ejs'); %>
@@ -15,7 +15,7 @@
       <div class="container">
         <div class="row gy-5">
           <div class="col-xl-5 content">
-            <h3>Sobre Nosotros <strong>rol: <%=rol%>rol: <%=rol%></strong></h3>
+            <h3>Sobre Nosotros</h3>
             <h2>Tu cuerpo, tu gimnasio, tu libertad.</h2>
             <p>En StreetWiseFitness, nuestra misión es proporcionarte las herramientas y el apoyo necesarios para alcanzar una vida saludable y activa. Con nuestras clases por Zoom, planes personalizados, venta de alimentos y equipos deportivos, estamos comprometidos a brindarte una experiencia integral y satisfactoria en tu viaje hacia una mejor versión de ti mismo. ¡Únete a nosotros hoy mismo y descubre el poder transformador de SWF!</p>
             <a href="/registroUsuario" class="read-more"><span>Registrarme</span><i class="bi bi-arrow-right"></i></a>

@@ -12,8 +12,7 @@ inicio.get('/planes',validateToken,(req,res)=>{res.render("planes")})
 inicio.get('/recetasDeLaComunidad',validateToken,(req,res)=>{res.render("recipes")})
 inicio.get('/CrearPlanes',(req,res)=>{res.render("createPlan")})
 inicio.post('/CrearElPlan',planControllers.createPlanes)
-inicio.get('/admin',controllers.getUsuarios)
-inicio.post('/disable-user',controllers.inhabilitar)
 inicio.get('/cerrarSesion',controllers.cerrarSesion)
+inicio.get('/configuraciones',(req,res)=>{res.render("config")})
 
 export default inicio;

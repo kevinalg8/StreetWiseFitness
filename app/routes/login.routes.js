@@ -8,7 +8,7 @@ const login = Router();
 
 login.get('/', controllers.alerta)
 //login.get('/',(req, res)=>{res.render("login")}
-login.post('/auth/inicio',validating.validateUserLogin,controllers.loginUsuario)
+login.post('/auth',validating.validateUserLogin,controllers.loginUsuario)
 login.get('/RegistroUsuario', (req, res)=>{res.render("registroUsuario")})
 login.post('/guardar',validating.validateUserReg,controller.insertUsuario)
 export default login;

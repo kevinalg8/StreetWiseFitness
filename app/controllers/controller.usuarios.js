@@ -52,16 +52,16 @@ export const loginUsuario = async (req, res) => {
         });
         res.cookie("SWF", token)
         if (datosDb.ESTADO == 1) {
-          if (datosDb.COD_ROL == 1) {
+          if (datosDb.COD_ROL === 1 || datosDb.COD_ROL ===2) {
             res.render("inicio", {
               "user": datosDb,
               "rol": datosDb.COD_ROL
             });
+            
           }
-          console.log(dataLogin);
           if (datosDb.COD_ROL == 3) {
             try {
-              let ruta = process.env.API_URL + '/consult';
+              let ruta = 'http://localhost:3000/api/users';
               let option = {
                 method: "GET"
               };
@@ -82,7 +82,6 @@ export const loginUsuario = async (req, res) => {
               console.log(error);
             }
           }
-          console.log(datosDb)
         }else{
           console.log("Usuario Inhabilitado");
         }

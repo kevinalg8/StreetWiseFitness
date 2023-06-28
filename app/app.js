@@ -5,6 +5,7 @@ import path from 'path';
 import * as url from 'url';
 import loginRoute from './routes/login.routes.js';
 import homeRoute from './routes/inicio.routes.js';
+import adminRoute from './routes/admin.routes.js';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
@@ -30,5 +31,6 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended:false }));
 
 app.use("/",loginRoute);
+app.use("/admin",adminRoute);
 app.use("/inicio",homeRoute);
 export default app;
