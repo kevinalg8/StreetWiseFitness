@@ -61,7 +61,7 @@ export const loginUsuario = async (req, res) => {
           console.log(dataLogin);
           if (datosDb.COD_ROL == 3) {
             try {
-              let ruta = process.env.API_URL + '/users';
+              let ruta = process.env.API_URL + '/consult';
               let option = {
                 method: "GET"
               };
@@ -75,7 +75,8 @@ export const loginUsuario = async (req, res) => {
                 console.log(usuarios);
                 
               res.render("admin", {
-                "users": usuarios
+                "users": usuarios,
+                "rol":datosDb.COD_ROL
               });
             } catch (error) {
               console.log(error);
@@ -129,4 +130,15 @@ export const inhabilitar = async (req, res) => {
     console.log(error);
   }
 };
+
+export const alerta = (req,res)=>{
+  let Alerta = req.query.error
+  console.log(Alerta)
+  res.render("login",{Alert:Alerta})
+}
+
+export const cerrarSesion = (req,res)=>{
+  res.clearCookie("SWF");
+  res.redirect("/");
+}
 

@@ -5,7 +5,7 @@ export const validateResults=(req,res,next)=>{
         validationResult(req).throw()
         next()
     } catch (error) {
-        res.sendStatus(403)
+        res.redirect("/?error=1")
         console.log(error);   
     }
 }

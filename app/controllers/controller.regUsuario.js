@@ -11,7 +11,6 @@ export const insertUsuario =(req, res) => {
             CONTRASENA: req.body.CONTRASENA,
             COD_ROL: 1
         }
-        //let encriptar = bycript.hash(data.CONTRASENA, 8)
         let metodo = "POST";
         let url = process.env.API_URL + '/users';
         let option = {

@@ -6,14 +6,16 @@
 <title>Inicio</title>
 
 <body>
-  <%- include('partials/navbar.ejs'); %>
-  <%- include('partials/nav_img.ejs'); %>
+  <% if(rol === 1){ %>
+    <%- include('partials/navbar.ejs'); %>
+  <% } %>
+    <%- include('partials/nav_img.ejs'); %>
   <!-- Services -->
     <div id="about" class="about">
       <div class="container">
         <div class="row gy-5">
           <div class="col-xl-5 content">
-            <h3>Sobre Nosotros</h3>
+            <h3>Sobre Nosotros <strong>rol: <%=rol%>rol: <%=rol%></strong></h3>
             <h2>Tu cuerpo, tu gimnasio, tu libertad.</h2>
             <p>En StreetWiseFitness, nuestra misión es proporcionarte las herramientas y el apoyo necesarios para alcanzar una vida saludable y activa. Con nuestras clases por Zoom, planes personalizados, venta de alimentos y equipos deportivos, estamos comprometidos a brindarte una experiencia integral y satisfactoria en tu viaje hacia una mejor versión de ti mismo. ¡Únete a nosotros hoy mismo y descubre el poder transformador de SWF!</p>
             <a href="/registroUsuario" class="read-more"><span>Registrarme</span><i class="bi bi-arrow-right"></i></a>
@@ -80,7 +82,7 @@
                   </li>
                   <li class="py-1">
                     <i class="icon-check text-success"></i> Morning and Evening
-                    Batches
+                    Batchesn);
                   </li>
                 </ul>
                 <div class="d-flex mt-3">
@@ -175,7 +177,7 @@
             <h3>Suplementos y equipamento</h3>
             <h2>Maximiza tu Potencial con Suplementos, Vitaminas y Equipamiento Deportivo</h2>
             <p>Te ofrecemos una amplia selección de suplementos deportivos y equipamiento de calidad. Potencia tus entrenamientos y alcanza tus metas fitness con nuestra variedad de productos confiables y efectivos. Desde proteínas y vitaminas hasta pesas y accesorios, en SWF encontrarás todo lo que necesitas para llevar tu rendimiento al máximo nivel.</p>
-            <a href="/productos" class="read-more"><span>Ver Productos</span><i class="bi bi-arrow-right"></i></a>
+            <a href="../inicio/productos" class="read-more"><span>Ver Productos</span><i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
       </div>  
