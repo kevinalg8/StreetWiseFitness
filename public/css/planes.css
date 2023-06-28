@@ -1,29 +1,33 @@
+  @import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
+  h3{
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 19px;
+      padding: 10px 20px;
+      background: #ecebeb;
+      color: #161516;
+      border-radius: 7px;
+      display: inline-block;
+      margin: 60px 10px 0 40px;
+  }
 
-h3{
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 19px;
-    padding: 10px 20px;
-    background: #ecebeb;
-    color: #161516;
-    border-radius: 7px;
-    display: inline-block;
-    margin: 60px 10px 0 40px;
-}
+  .info .info-text h5{
+      color: #31095c;
+      font-weight: 750;
+  }
 
-.info .info-text h5{
-    color: #31095c;
-    font-weight: 750;
-}
+  .info p{
+      font-size: 18px;
+  }
 
-.info p{
-    font-size: 18px;
-}
+  .features{
+      margin-top: 50px;
+  }
 
-.features{
-    margin-top: 50px;
-    margin-right: 100px;
-}
+  .features .features-item h2{
+    font-family: 'Calistoga', cursive;
+  }
+
   .features .features-item .btn-get-started {
     background-color: #31095c;
     color: #ecebeb;
@@ -39,6 +43,10 @@ h3{
     text-decoration: none;
   }
   
+  .features .features-item .btn-get-started i {
+    font-size: 16px;
+    margin-left: 10px;
+  }
   .features .features-item .btn-get-started:hover {
     background-color: #ecebeb;
     color: #31095c;
@@ -71,3 +79,158 @@ h3{
     object-fit: cover;
   }
 
+  .splash{
+    background: rgb(0,0,0);
+    background: linear-gradient(50deg, rgba(0,0,0,1) 0%, rgba(62,0,71,1) 35%, rgba(0,48,57,1) 100%); 
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin-top: 8%;
+}
+.splash::after{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    transform-origin: top left;
+    transform: skewY(-4deg);
+}
+
+.why-us .container h1{
+  color: #ecebeb;
+  text-align: center;
+  font-family: 'Calistoga', cursive;
+}
+
+.why-us .container p{
+  color: #ecebeb;
+  text-align: center;
+}
+
+.why-us .content {
+  margin: 8%;
+  padding: 30px;
+  background: #f2f5f3;
+  border-radius: 8px;
+  color: #31095c;
+}
+
+.why-us .content h2 {
+  font-weight: 700;
+  font-size: 34px;
+  margin-bottom: 30px;
+}
+
+.why-us .content p {
+  margin-bottom: 30px;
+  color: #848484;
+}
+
+.why-us .content .more-btn {
+  display: inline-block;
+  background: #31095c;
+  padding: 6px 30px 8px 30px;
+  color: #fff;
+  border-radius: 50px;
+  transition: all ease-in-out 0.4s;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.why-us .content .more-btn i {
+  font-size: 14px;
+}
+
+.why-us .content .more-btn:hover {
+  color: #31095c;
+  background: #fff;
+}
+
+.why-us .icon-boxes .icon-box {
+  text-align: center;
+  background: #fff;
+  padding: 40px 30px;
+  width: 100%;
+  border: 1px solid #eef0ef;
+  border-radius: 15pxñ;
+}
+
+.why-us .icon-boxes .icon-box i {
+  font-size: 32px;
+  padding: 18px;
+  color: #31095c;
+  margin-bottom: 30px;
+  background: #ecf9f0;
+  border-radius: 50px;
+}
+
+.why-us .icon-boxes .icon-box h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 30px;
+  color: #31095c;
+}
+
+.why-us .icon-boxes .icon-box p {
+  font-size: 15px;
+  color: #848484;
+}
+
+.about {
+  background-color: white;
+  margin: 50px;
+}
+
+.about h3 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  padding: 10px 20px;
+  background: #ecebeb;
+  color: #161516;
+  border-radius: 7px;
+  display: inline-block;
+}
+
+.card {
+  margin: 0 0.5em;
+  box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+  border: none;
+  border-radius: 0;
+}
+
+.card img{
+  width: 60%;
+  height: 60%;
+}
+
+.card .card-body h5 {
+  font-size: 15px;
+}
+
+.card .card-body p {
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.card .card-footer a{
+  border-radius: 25px;
+  margin-left: 40px;
+  background-color: #31095c;
+  color: #ecebeb;
+  font-weight: 600;
+  border-style: none;
+}
+
+.card .card-footer a:hover{
+  border-radius: 25px;
+  margin-left: 40px;
+  background-color: #ecebeb;
+  color: #31095c;
+}
