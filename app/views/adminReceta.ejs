@@ -27,7 +27,7 @@
       </thead>
       <tbody>
         <% recipes.forEach((elements)=>{ %>
-          <form action="" method="POST">
+          <form action="/admin/disable-receta?id=<%= elements.COD_RECETA %>&estado=<%= elements.ESTADO%>" method="POST">
             <tr>
                 <th scope="row">
                     <%= elements.COD_RECETA %>

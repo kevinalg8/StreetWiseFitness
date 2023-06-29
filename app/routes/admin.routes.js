@@ -7,13 +7,21 @@ import {validateToken} from '../middlewares/middleware.js'
 const admin = Router();
 
 admin.get('/',controllers.getUsuarios)
+
+// PLANES
 admin.get('/CrearPlanes',(req,res)=>{res.render("createPlan")})
 admin.post('/CrearElPlan',planControllers.createPlanes)
+
+// USUARIOS
 admin.post('/disable-user',controllers.inhabilitar)
 admin.get('/cerrarSesion',controllers.cerrarSesion)
 admin.get('/planes', planControllers.getPlanes)
-admin.get('/receta', recetaControllers.getReceta)
 
+// RECETAS
+admin.get('/receta', recetaControllers.getReceta)
+admin.post('/disable-receta', recetaControllers.disableReceta)
+
+// REPORTES
 admin.post('/generarPdf', controllers.generarPdf)
 admin.post('/generarExcel', controllers.generarExcel)
 
