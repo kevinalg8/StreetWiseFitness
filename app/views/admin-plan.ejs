@@ -28,7 +28,7 @@
       </thead>
       <tbody>
         <% plans.forEach((elements)=>{ %>
-          <form action="" method="POST">
+          <form action="/admin/disable-plan?id=<%= elements.COD_PLAN %>&estado=<%= elements.ESTADO%>" method="POST">
             <tr>
               <th scope="row">
                 <%= elements.COD_USERPLAN %>

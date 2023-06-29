@@ -11,6 +11,7 @@ admin.get('/',controllers.getUsuarios)
 // PLANES
 admin.get('/CrearPlanes',(req,res)=>{res.render("createPlan")})
 admin.post('/CrearElPlan',planControllers.createPlanes)
+admin.post('/disable-plan',planControllers.disablePlan)
 
 // USUARIOS
 admin.post('/disable-user',controllers.inhabilitar)
