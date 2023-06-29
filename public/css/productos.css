@@ -49,6 +49,11 @@ h1{
     border-radius: 0;
   }
 
+  .card img{
+    width: 50%;
+    height: 50%;
+  }
+
   .card .card-body h5 {
     font-size: 15px;
   }
