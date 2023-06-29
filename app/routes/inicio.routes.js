@@ -13,6 +13,7 @@ inicio.get('/trenInferior',validateToken,controllerProds.getProdinf)
 inicio.get('/trenSuperior',validateToken,controllerProds.getProdsup)
 inicio.get('/plangeneral',validateToken,controllerProds.getProdgen)
 inicio.get('/recetas',validateToken,(req,res)=>{res.render("recipes")})
+inicio.get('/createPlan', planControllers.getAllplanes)
 inicio.post('/CrearRecetas',planRecetas.crearReceta)
 inicio.get('/cerrarSesion',controllers.cerrarSesion)
 

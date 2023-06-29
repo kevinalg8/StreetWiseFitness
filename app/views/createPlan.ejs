@@ -2,24 +2,33 @@
 <html lang="en">
 <head>
     <%- include('partials/head.ejs'); %>
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/productos.css">
     <title>Crear Plan</title>
 </head>
 <body>
-    <%- include('partials/navbar.ejs'); %>
-    <%- include('partials/nav_img.ejs'); %>
-    <form method="POST" action="crearElPlan">
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputEmail4">Nombre</label>
-            <input type="text" class="form-control" id="inputEmail4" placeholder="Nombre del Plan" name="NOMBRE">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputPassword4">Descripcion</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="DESCRIPCION"></textarea>
-          </div>
+  <%- include('./partials/navbar.ejs'); %>
+  <%- include('./partials/nav_img.ejs'); %>
+  <div class="card-group cards-wrapper">
+    <div id="about" class="about">
+      <div class="container">
+        <div class="card-group cards-wrapper">
+          <% planes.forEach( function(elements) { %>
+            <div class="card" style="width: 20rem">
+              <div class="card-body">
+                <h5 class="card-title"><%= elements.NOMBRE %></h5>
+                <p class="card-text"><%= elements.DESCRIPCION %></p>
+              </div>
+              <div class="card-footer">
+                <a target="_blank" href="" class="btn btn-primary"><%= elements.TELEFONO %></a>
+              </div>
+            </div>
+            <% }); %>
         </div>
-        <button type="submit" class="btn btn-primary">Crear</button>
-      </form>
-    
+      </div>
+    </div>
+  </div>
+  <%- include('partials/footer.ejs'); %>
+
 </body>
 </html>

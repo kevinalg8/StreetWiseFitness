@@ -84,6 +84,29 @@ export const getPlanes = async (req, res) => {
   }
 };
 
+export const getAllplanes = async (req, res) => {
+  try {
+    let ruta = 'http://localhost:3000/plan/AllPlans';
+    let option = {
+      method: "GET"
+    };
+    let plan = {};
+    const resultado = await fetch(ruta, option)
+      .then(response => response.json())
+      .then(data => {
+        plan = data[0];
+      })
+      .catch(err => console.error("Error en peticion: " + err));
+
+    res.render("createPlan", {
+      "planes": plan
+    });
+    console.log(plan);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const disablePlan = async (req, res) => {
   let estado = req.query.estado
   if (estado == 1) {

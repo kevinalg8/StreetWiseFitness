@@ -159,7 +159,7 @@ export const inhabilitar = async (req, res) => {
         console.log(data);
       })
       .catch(err => console.error("Error en peticion: " + err));
-    res.redirect("admin")
+    res.redirect("/admin")
   } catch (error) {
     console.log(error);
   }
@@ -215,7 +215,7 @@ export const generarPdf = async (req, res) => {
 
     // Crear la tabla
     const table = {
-      headers: ['ID', 'NOMBRE', 'APELLIDO', 'FECHA', 'CORREO', 'ROOL', 'ESTADO', 'CELULAR'],
+      headers: ['ID', 'NOMBRE', 'APELLIDO', 'FECHA', 'CORREO', 'ROL', 'ESTADO', 'CELULAR'],
       rows: usuarioslData.map(usuarios => [
         usuarios.COD_USUARIO,
         usuarios.NOMBRES,
