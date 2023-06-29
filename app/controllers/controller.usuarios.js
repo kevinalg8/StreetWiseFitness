@@ -57,42 +57,14 @@ export const loginUsuario = async (req, res) => {
         res.cookie("SWF", token)
         if (datosDb.ESTADO == 1) {
           if (datosDb.COD_ROL === 1 || datosDb.COD_ROL ===2) {
+            console.log("hola");
             res.render("inicio", {
               "user": datosDb,
               "rol": datosDb.COD_ROL,
               "cod_User":datosDb.COD_USUARIO
             });
             console.log(datosDb.COD_USUARIO);
-            try {
-              console.log(datosDb.COD_USUARIO);
-              let data = {
-                NOMBRE: req.body.NOMBRE,
-                DESCRIPCION: req.body.DESCRIPCION,
-                COD_USUARIO: req.body.COD_USUARIO
-              }
-              let metodo = "POST";
-              let url = process.env.API_URL + '/rec';
-              let option = {
-                method: metodo,
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            }
-        
-            try {
-              const respuesta = fetch(url, option)
-                  .then(response => response.json())
-                  .then(data =>
-                      //data:data
-                      console.log(`Receta Creada`))
-                  .catch(err => console.log(`Error: ${err}`))
-          } catch (error) {
-              console.log(`error en ${error}`);
-          }
-            } catch (error) {
-              
-            }
+            
           }
           if (datosDb.COD_ROL == 3) {
             try {
