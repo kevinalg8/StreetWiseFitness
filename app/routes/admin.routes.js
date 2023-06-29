@@ -22,6 +22,11 @@ admin.get('/planes', planControllers.getPlanes)
 admin.get('/receta', recetaControllers.getReceta)
 admin.post('/disable-receta', recetaControllers.disableReceta)
 
+// REPORTES RECETAS
+admin.post('/generarPdfReceta', recetaControllers.generarPdfReceta)
+admin.post('/generarExcelReceta', recetaControllers.generarExcelReceta)
+
+
 // REPORTES USUARIO
 admin.post('/generarPdf', controllers.generarPdf)
 admin.post('/generarExcel', controllers.generarExcel)

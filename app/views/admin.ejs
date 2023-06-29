@@ -69,22 +69,17 @@
             <% }) %>
             <form id="generarForm" method="POST" action="admin/generarPdf">
               <input type="hidden" name="datos">
-              <button class="btn btn-danger" type="submit" onclick="setAction('pdf')">
+              <button class="btn btn-danger" type="submit">
                 <i>PDF</i>
               </button>
-              <!-- <button class="btn btn-success" type="submit" onclick="setAction('excel')">
-                <i >EXCEL</i>
-              </button> -->
             </form>
             <form id="generarForm" method="POST" action="admin/generarExcel">
               <input type="hidden" name="datos">
-              <button class="btn btn-success" type="submit" onclick="setAction('pdf')">
+              <button class="btn btn-success" type="submit">
                 <i>Excel</i>
               </button>
-              <!-- <button class="btn btn-success" type="submit" onclick="setAction('excel')">
-                <i >EXCEL</i>
-              </button> -->
             </form>
+            
         </tbody>
     </table>
   </div>

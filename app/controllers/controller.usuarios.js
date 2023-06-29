@@ -158,22 +158,10 @@ export const generarPdf = async (req, res) => {
     res.setHeader('Content-Disposition', 'attachment; filename=usuarios.pdf');
     doc.pipe(res);
 
-    // Agregar el logo del proyecto
-    // const logoHeight = 50;
-    // const logoWidth = 50;
-    // const __dirname = path.resolve()
-    // const imagePath = path.resolve(path.join(__dirname, 'public', 'img', 'logoSena.png')) ;
-    // const logoX = (pageWidth - logoWidth) / 2;
-    // const logoY = 30;
 
     const pageWidth = doc.page.width;
     const pageHeight = doc.page.height;
 
-
-    // doc.image(imagePath, logoX, logoY, { width: logoWidth, height: logoHeight });
-
-    // Agregar espacio después de la imagen
-    doc.moveDown(2);
 
     // Agregar el encabezado
     doc.fontSize(24).text('Registro de usuarios', { align: 'center' });
