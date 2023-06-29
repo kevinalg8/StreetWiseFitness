@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import axios from "axios";
 import PDFDocument from "pdfkit-table";
 import path from 'path';
+import excel from "exceljs";
 
 export const getUsuarios = async (req, res) => {
   try {
@@ -174,7 +175,7 @@ export const cerrarSesion = (req,res)=>{
   res.clearCookie("SWF");
   res.redirect("/");
 }
-
+//generacion documeto pdf con datos del usuario
 export const generarPdf = async (req, res) => {
   try {
     // Hacer una solicitud GET a la API para obtener la información
@@ -214,7 +215,7 @@ export const generarPdf = async (req, res) => {
 
     // Crear la tabla
     const table = {
-      headers: ['ID', 'NOMBRE', 'APELLIDO', 'FECHA', 'CORREO', 'ROOL', 'ESTADO', 'CELULAR', 'CONTRASEÑA'],
+      headers: ['ID', 'NOMBRE', 'APELLIDO', 'FECHA', 'CORREO', 'ROOL', 'ESTADO', 'CELULAR'],
       rows: usuarioslData.map(usuarios => [
         usuarios.COD_USUARIO,
         usuarios.NOMBRES,
@@ -223,8 +224,7 @@ export const generarPdf = async (req, res) => {
         usuarios.CORREO,
         usuarios.COD_ROL,
         usuarios.ESTADO,
-        usuarios.CELULAR,
-        usuarios.CONTRASENA
+        usuarios.CELULAR
       ])
     };
 
@@ -243,5 +243,68 @@ export const generarPdf = async (req, res) => {
     // Manejar errores de solicitud o cualquier otro error
     console.error(error);
     res.status(500).send('Error al generar el PDF');
+  }
+};
+//generacion documento excel con datos del usuario
+export const generarExcel = async (req, res) => {
+  try {
+    // Hacer una solicitud GET a la API para obtener la información
+    const response = await axios.get(process.env.API_URL + '/users');
+    const usuarioData = response.data[0]; // Obtener el primer elemento del arreglo
+
+    // Crear un nuevo libro de Excel
+    const workbook = new excel.Workbook();
+    const worksheet = workbook.addWorksheet('Usuarios');
+
+     // Mostrar información por consola
+    //  console.log('Información del Usuario:');
+    //  usuarioData.forEach((usuarios) => {
+    //    console.log(`ID: ${usuarios.COD_USUARIO}`);
+    //    console.log(`Nombre del usuario: ${usuarios.NOMBRES}`);
+    //    console.log(`Apellido del usuario: ${usuarios.APELLIDOS}`);
+    //    console.log(`Fecha nacimiento del usuario: ${usuarios.FECHA_NACIMIENTO}`);
+    //    console.log(`Correo del usuario: ${usuarios.CORREO}`);
+    //    console.log(`Rol del usuario: ${usuarios.COD_ROL}`);
+    //    console.log(`estado del usuario: ${usuarios.ESTADO}`);
+    //    console.log(`celular del usuario: ${usuarios.CELULAR}`);
+    //  });
+
+    // Agregar encabezados de columna
+    worksheet.columns = [
+      { header: 'ID', key: 'COD_USUARIO', width: 10 },
+      { header: 'Nombre', key: 'NOMBRES', width: 20 },
+      { header: 'Apellido', key: 'APELLIDOS', width: 15 },
+      { header: 'Fecha de nacimiento', key: 'FECHA_NACIMIENTO', width: 15 },
+      { header: 'Correo', key: 'CORREO', width: 25 },
+      { header: 'Codigo rol', key: 'COD_ROL', width: 15 },
+      { header: 'Estado', key: 'ESTADO', width: 15 },
+      { header: 'celular', key: 'CELULAR', width: 15 },
+    ];
+
+    // Agregar filas con datos
+    usuarioData.forEach((usuarios) => {
+      worksheet.addRow({
+        COD_USUARIO: usuarios.COD_USUARIO,
+        NOMBRES: usuarios.NOMBRES,
+        APELLIDOS: usuarios.APELLIDOS,
+        FECHA_NACIMIENTO: usuarios.FECHA_NACIMIENTO,
+        CORREO: usuarios.CORREO,
+        COD_ROL: usuarios.COD_ROL,
+        ESTADO: usuarios.ESTADO,
+        CELULAR: usuarios.CELULAR,
+      });
+    });
+
+    // Stream el contenido Excel a la respuesta HTTP
+    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    res.setHeader('Content-Disposition', 'attachment; filename=usuarios.xlsx');
+    await workbook.xlsx.write(res);
+
+    // Finalizar la escritura del libro de Excel
+    res.end();
+  } catch (error) {
+    // Manejar errores de solicitud o cualquier otro error
+    console.error(error);
+    res.status(500).send('Error al generar el archivo Excel');
   }
 };
