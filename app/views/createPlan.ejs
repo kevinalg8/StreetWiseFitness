@@ -3,7 +3,7 @@
 <head>
     <%- include('partials/head.ejs'); %>
     <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/productos.css">
+    <link rel="stylesheet" href="../css/createPlan.css">
     <title>Crear Plan</title>
 </head>
 <body>
@@ -28,7 +28,45 @@
       </div>
     </div>
   </div>
+<!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Crear Plan
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crear Plan</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="guardarPlan" method="post">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label" name="NOMBRE">Nombre</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" name="NOMBRE">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="DESCRIPCION"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Telefono</label>
+              <input type="number" class="form-control" id="exampleFormControlInput1" name="TELEFONO">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Crear</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
   <%- include('partials/footer.ejs'); %>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="js/noLog.js"></script>
 </html>

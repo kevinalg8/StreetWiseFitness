@@ -35,10 +35,11 @@ export const createPlanes = (req, res) => {
 };
  */
 
-export const createPlanes =(req, res) => {
+export const createPlanes =async(req, res) => {
       let data = {
           NOMBRE: req.body.NOMBRE,
           DESCRIPCION: req.body.DESCRIPCION,
+          TELEFONO: req.body.TELEFONO
       }
       let metodo = "POST";
       let url ="http://localhost:3000/plan/createPlan";
@@ -50,12 +51,12 @@ export const createPlanes =(req, res) => {
           body: JSON.stringify(data)
       }
       try {
-          const respuesta = fetch(url, option)
+          const respuesta = await fetch(url, option)
               .then(response => response.json())
               .then(data =>
                   //data:data
                   console.log(`Plan Creado`))
-              res.render("planes")
+              res.redirect("createPlan")
               .catch(err => console.log(`Error: ${err}`))
       } catch (error) {
           console.log(`error en ${error}`);
