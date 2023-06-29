@@ -25,9 +25,10 @@ export const getReceta = async (req, res) => {
     } catch (error) {
       console.log(error);
     }
-  };
+};
 
-  export const disableReceta = async (req, res) => {
+
+export const disableReceta = async (req, res) => {
     let estado = req.query.estado
     if (estado == 1) {
       estado = 0
@@ -50,8 +51,8 @@ export const getReceta = async (req, res) => {
       console.log(data);
       let estad = {};
       const resultado = await fetch(ruta, option)
-        .then(response => response.json())
-        .then(data => {
+      .then(response => response.json())
+      .then(data => {
           console.log(data);
         })
         .catch(err => console.error("Error en peticion: " + err));
@@ -171,3 +172,35 @@ export const getReceta = async (req, res) => {
       res.status(500).send('Error al generar el archivo Excel');
     }
   };
+  
+  export const crearReceta = async (req, res) => {
+    if(req.body.NOMBRE && req.body.DESCRIPCION){
+  
+        let data = {
+          NOMBRE: req.body.NOMBRE,
+          DESCRIPCION: req.body.DESCRIPCION
+        }
+        let metodo = "POST";
+        let url = process.env.API_URL + '/rec';
+        let option = {
+          method: metodo,
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+      }
+  
+      try {
+        const respuesta = fetch(url, option)
+            .then(response => response.json())
+            .then(data =>
+                //data:data
+                console.log(`Receta Creada`))
+            .catch(err => console.log(`Error: ${err}`))
+    } catch (error) {
+        console.log(`error en ${error}`);
+    }
+    //res.redirect("/")
+    }
+  
+  }
