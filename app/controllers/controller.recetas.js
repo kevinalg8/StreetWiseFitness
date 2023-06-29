@@ -2,6 +2,7 @@ import fetch from "node-fetch";
 import axios from "axios";
 import PDFDocument from "pdfkit-table";
 import excel from "exceljs";
+import path from "path";
 
 export const getReceta = async (req, res) => {
     try {
@@ -77,8 +78,24 @@ export const disableReceta = async (req, res) => {
       doc.pipe(res);
 
   
-      const pageWidth = doc.page.width;
-      const pageHeight = doc.page.height;
+// Agregar el logo del proyecto
+const logoHeight = 50;
+const logoWidth = 50;
+const __dirname = path.resolve()
+const imagePath = path.resolve(path.join(__dirname,'public', 'img', 'Logo.png')) ;
+console.log(imagePath);
+const pageWidth = doc.page.width;
+
+const logoX = (pageWidth - logoWidth) / 2;
+const logoY = 30;
+
+const pageHeight = doc.page.height;
+
+
+doc.image(imagePath, logoX, logoY, { width: logoWidth, height: logoHeight });
+
+// Agregar espacio después de la imagen
+doc.moveDown(2);
   
   
   
