@@ -30,7 +30,7 @@
       </thead>
       <tbody>
         <% users.forEach((elements)=>{ %>
-          <form action="../inicio/disable-user?id=<%= elements.COD_USUARIO %>&estado=<%= elements.ESTADO%>" method="POST">
+          <form action="/admin/disable-user?id=<%= elements.COD_USUARIO %>&estado=<%= elements.ESTADO%>" method="POST">
             <tr>
               <th scope="row">
                 <%= elements.COD_USUARIO %>
