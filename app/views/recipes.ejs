@@ -10,25 +10,59 @@
 
     <%- include('partials/nav_img.ejs'); %>
 
-  <div class="container">
-    <form method="POST" action="CrearRecetas">
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="inputEmail4">Nombre</label>
-          <input type="text" class="form-control" id="inputEmail4" placeholder="Nombre de la receta" name="NOMBRE">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="inputPassword4">Descripcion</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="DESCRIPCION"></textarea>
-        </div>
-        <div class="form-group col-md-6">
-          <label for="inputPassword4">Descripcion</label>
-          <input type="text" id="disabledTextInput" class="form-control" placeholder="2">
-        </div>
+
+    <h1>Recetas de la comunidad</h1>
+ <!-- Button trigger modal -->
+ <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Crear Recetas
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear Recetas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <button type="submit" class="btn btn-primary">Crear</button>
+      <div class="modal-body">
+        <form action="guardarReceta" method="POST">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label" name="NOMBRE">Nombre</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="NOMBRE">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="DESCRIPCION"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Ingredientes</label>
+            <input class="form-control" id="exampleFormControlInput1" name="INGREDIENTES">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Crear</button>
+      </div>
     </form>
+    </div>
   </div>
+</div>
+<% recipesUser.forEach( function(elements) { %>
+  <div class="card" style="width: 20rem">
+    <div class="card-body">
+      <h5 class="card-title"><%= elements.NOMBRE %></h5>
+      <p class="card-text"><%= elements.DESCRIPCION %></p>
+    </div>
+    <div class="card-footer">
+      <a target="_blank" href="" class="btn btn-primary"><%= elements.INGREDIENTES %></a>
+    </div>
+  </div>
+  <% }) %>
+
+
+
+
     <%- include('partials/footer.ejs'); %>
 
 </body>
