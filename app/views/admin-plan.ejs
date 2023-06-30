@@ -9,7 +9,11 @@
 <body>
   <div class="content">
     <div class="container">
-      <h2 class="mb-5">Planes</h2>
+      <h2 class="mb-5"><a href="/admin/">Usuarios /</a><a href="/admin/planes">Planes / </a> <a href="/admin/receta">Recetas</a>
+        <a href="/admin/cerrarSesion" class="btn btn-danger btn-out">         
+          <i class="bi bi-box-arrow-in-right"></i>
+        </a>
+      </h2>
       <div class="table-responsive">
         <table class="table table-striped user-table">
           <thead>
@@ -20,12 +24,10 @@
               <th scope="col">Telefono</th>
               <th scope="col" class="text-center">Estado</th>
               <th scope="col">Accion</th>
-              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
             <% plans.forEach((elements)=>{ %>
-
               <tr>
                 <th scope="row">
                   <%= elements.COD_PLAN %>
@@ -53,53 +55,6 @@
                         <input class="btn btn-success" type="submit" value="Habilitar"> </input>
                         <% } %>
                   </td>
-                </form>
-
-                <td>
-
-<!-- //////////////////////// -->
-                  <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Editar
-                  </button>
-                  
-                  <!-- Modal -->
-                  <% plans2.forEach(element => { %>
-                  <div class="modal fade text-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">CODIGO <%= element.COD_PLAN%></h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                           
-                          <form action="guardarReceta" method="POST">
-                              <div class="mb-3">
-                              <label for="exampleFormControlInput1" class="form-label" name="NOMBRE">Nombre</label>
-                              <input type="text" class="form-control" id="exampleFormControlInput1" name="NOMBRE" value="">
-                            </div>
-                            <div class="mb-3">
-                              <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
-                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="DESCRIPCION"></textarea>
-                            </div>
-                            <div class="mb-3">
-                              <label for="exampleFormControlTextarea1" class="form-label">Ingredientes</label>
-                              <input class="form-control" id="exampleFormControlInput1" name="INGREDIENTES">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                          <button type="submit" class="btn btn-primary">Crear</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                  <% }) %>
-                  </div>
-<!-- //////////////////////// -->
-                  </input>
-                </td>
-
               </tr>
 
               <% }) %>

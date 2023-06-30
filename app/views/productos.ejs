@@ -10,7 +10,7 @@
       <%- include('./partials/nav_img.ejs'); %>
         <div id="about" class="about">
           <div class="container">
-            <h3><%= seller1.nickname %></h3>
+            <a target="_blank" href="<%= seller1.permalink %>"><h3><%= seller1.nickname %></h3></a> 
             <div class="card-group cards-wrapper">
               <% produc1.forEach( function(data1) { %>
                 <div class="card" style="width: 20rem">
@@ -29,7 +29,7 @@
         </div>
         <div id="about" class="about">
           <div class="container">
-          <h3><%= seller2.nickname %></h3>
+            <a target="_blank" href="<%= seller2.permalink %>"><h3><%= seller2.nickname %></h3></a> 
             <div class="card-group cards-wrapper">
               <% produc2.forEach( function(data2) { %>
                 <div class="card" style="width: 20rem">
@@ -48,7 +48,7 @@
         </div>
         <div id="about" class="about">
           <div class="container">
-            <h3><%= seller3.nickname %></h3>
+            <a target="_blank" href="<%= seller3.permalink %>"><h3><%= seller3.nickname %></h3></a> 
             <div class="card-group cards-wrapper">
               <% produc3.forEach( function(data3) { %>
                 <div class="card" style="width: 20rem">
@@ -67,7 +67,7 @@
         </div>
         <div id="about" class="about">
           <div class="container">
-            <h3><%= seller4.nickname %></h3>
+            <a target="_blank" href="<%= seller4.permalink %>"><h3><%= seller4.nickname %></h3></a> 
             <div class="card-group cards-wrapper">
               <% produc4.forEach( function(data4) { %>
                 <div class="card" style="width: 20rem">

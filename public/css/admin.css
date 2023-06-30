@@ -1,3 +1,11 @@
+.content .container a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.content .container .btn-out{
+    margin-left: 580px;
+}
 
 
 p {

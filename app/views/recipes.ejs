@@ -1,76 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('partials/head.ejs'); %>
-<link rel="stylesheet" href="../css/inicio.css" />
-<link rel="stylesheet" href="../css/footer.css">
-<title>Recetas comunidad</title>
+<%- include('partials/head.ejs'); %>
+  <link rel="stylesheet" href="../css/recipes.css" />
+  <link rel="stylesheet" href="../css/footer.css">
+  <title>Recetas comunidad</title>
 
-<body>
+  <body>
     <%- include('partials/navbar.ejs'); %>
 
-    <%- include('partials/nav_img.ejs'); %>
-
-
-    <h1>Recetas de la comunidad</h1>
- <!-- Button trigger modal -->
- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Crear Recetas
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Crear Recetas</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="guardarReceta" method="POST">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label" name="NOMBRE">Nombre</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="NOMBRE">
+      <%- include('partials/nav_img.ejs'); %>
+        <div id="about" class="about">
+          <div class="container">
+            <div class="row gy-5">
+              <div class="col-xl-7">
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="../img/receta1.jpg" class="w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="../img/receta2.jpg" class="w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="../img/receta3.jpg" class="w-100" alt="...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-5 content">
+                <h3>Comparte tu Plan</h3>
+                <h2> Crea tu propio plan y permite que te contacten</h2>
+                <p>Crea tu propio plan y permite que los demás te contacten directamente desde nuestra web! Con nuestro
+                  servicio, puedes diseñar un plan personalizado en el que puedes subir el nombre, descripción y tu
+                  número de teléfono de contacto. Esta función te brinda la oportunidad de promocionar tu plan y
+                  permitir que cualquier persona interesada pueda comunicarse contigo fácilmente.</p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn create-recipe" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Crear Recetas
+                </button>
+              </div>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="DESCRIPCION"></textarea>
+        </div>
+        <h1 class="mb-3 text-center">Recetas de la Comunidad</h1>
+        <div class="container-fluid">
+          <div class="cards-wrapper">
+            <% recipesUser.forEach( function(elements) { %>
+              <div class="card bg-light-subtle mt-4 shadow">
+                <img src="../img/receta4.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <div class="text-section">
+                    <h5 class="card-title fw-bold">
+                      <%= elements.NOMBRE %>
+                    </h5>
+                    <p class="card-text">S<%= elements.DESCRIPCION %>
+                    </p>
+                    <h5 class="card-title fw-bold">Ingredientes</h5>
+                    <p class="card-text">S<%= elements.INGREDIENTES %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <% }) %>
           </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Ingredientes</label>
-            <input class="form-control" id="exampleFormControlInput1" name="INGREDIENTES">
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear Recetas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form action="guardarReceta" method="POST">
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label" name="NOMBRE">Nombre</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="NOMBRE">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                      name="DESCRIPCION"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Ingredientes</label>
+                    <input class="form-control" id="exampleFormControlInput1" name="INGREDIENTES">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Crear</button>
+              </div>
+              </form>
+            </div>
           </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary">Crear</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
-<% recipesUser.forEach( function(elements) { %>
-    <div class="card" style="width: 20rem">
-      <div class="card-body">
-        <h5 class="card-title"><%= elements.NOMBRE %></h5>
-        <p class="card-text"><%= elements.DESCRIPCION %></p>
-      </div>
-      <div class="card-footer">
-        <a target="_blank" href="" class="btn btn-primary"><%= elements.INGREDIENTES %></a>
-      </div>
-    </div>
-  <% }) %>
+        </div>
 
 
 
 
 
-    <%- include('partials/footer.ejs'); %>
+        <%- include('partials/footer.ejs'); %>
 
-</body>
-<script src="https://kit.fontawesome.com/3b116f099f.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="sweetalert2.all.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="js/noLog.js"></script>
+  </body>
+  <script src="https://kit.fontawesome.com/3b116f099f.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="sweetalert2.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/noLog.js"></script>
 
 </html>
