@@ -92,7 +92,7 @@ var crearReceta = /*#__PURE__*/function () {
             } catch (error) {
               console.log("error en ".concat(error));
             }
-            res.redirect("/recetas");
+            res.redirect("recetas");
           }
         case 1:
         case "end":

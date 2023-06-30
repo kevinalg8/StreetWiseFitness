@@ -57,7 +57,7 @@ export const crearReceta = async (req, res) => {
   } catch (error) {
       console.log(`error en ${error}`);
   }
-  res.redirect("/recetas")
+  res.redirect("recetas")
   }
 
 };
