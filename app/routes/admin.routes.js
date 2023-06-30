@@ -12,11 +12,11 @@ admin.get('/',controllers.getUsuarios)
 admin.get('/CrearPlanes',(req,res)=>{res.render("createPlan")})
 admin.post('/CrearElPlan',planControllers.createPlanes)
 admin.post('/disable-plan',planControllers.disablePlan)
+admin.get('/planes', planControllers.getPlanes)
 
 // USUARIOS
 admin.post('/disable-user',controllers.inhabilitar)
 admin.get('/cerrarSesion',controllers.cerrarSesion)
-admin.get('/planes', planControllers.getPlanes)
 
 // RECETAS
 admin.get('/receta', recetaControllers.getReceta)

@@ -67,7 +67,7 @@ export const createPlanes =async(req, res) => {
 
 export const getPlanes = async (req, res) => {
   try {
-    let ruta = 'http://localhost:3000/plan/AllPlanUser';
+    let ruta = 'http://localhost:3000/plan/AllPlans';
     let option = {
       method: "GET"
     };

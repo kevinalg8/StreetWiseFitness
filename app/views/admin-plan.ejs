@@ -5,57 +5,101 @@
   <link rel="stylesheet" href="../css/admin.css">
   <%- include('partials/head.ejs'); %>
 </head>
+
 <body>
   <div class="content">
     <div class="container">
-        <h2 class="mb-5">Planes</h2>
-        <div class="table-responsive">
-          <table class="table table-striped user-table">
-            <thead>
-              <tr>
-                <th scope="col">Codigo</th>
-                <th scope="col">usuario</th>
-                <th scope="col">Correo</th>
-                <th scope="col">plan</th>
-                <th scope="col" class="text-center">Nombre</th>
-                <th scope="col">Descripcion</th>
-                <th scope="col">Accion</th>
-              </tr>
-            </thead>
+      <h2 class="mb-5">Planes</h2>
+      <div class="table-responsive">
+        <table class="table table-striped user-table">
+          <thead>
+            <tr>
+              <th scope="col">Codigo</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Telefono</th>
+              <th scope="col" class="text-center">Estado</th>
+              <th scope="col">Accion</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
           <tbody>
             <% plans.forEach((elements)=>{ %>
-              <form action="/admin/disable-plan?id=<%= elements.COD_PLAN %>&estado=<%= elements.ESTADO%>" method="POST">
-                <tr>
-                  <th scope="row">
-                    <%= elements.COD_USERPLAN %>
-                  </th>
-                  <td>
-                    <%= elements.COD_USUARIO %>
-                  </td>
-                  <td>
-                    <%= elements.CORREO %>
-                  </td>
-                  <td>
-                    <%= elements.COD_PLAN %>
-                  </td>
-                  <td class="text-center">
-                    <%= elements.NOMBRE%>
-                  </td>
-                  <td>
-                    <%= elements.DESCRIPCION%>
-                  </td>
+
+              <tr>
+                <th scope="row">
+                  <%= elements.COD_PLAN %>
+                </th>
+                <td>
+                  <%= elements.NOMBRE %>
+                </td>
+                <td>
+                  <%= elements.DESCRIPCION %>
+                </td>
+                <td>
+                  <%= elements.TELEFONO %>
+                </td>
+                <td>
+                  <% if(elements.ESTADO==1){ %> activo <% }else{ %> inactivo <% } %>
+                </td>
+                <form action="/admin/disable-plan?id=<%= elements.COD_PLAN %>&estado=<%= elements.ESTADO%>"
+                  method="POST">
                   <td>
                     <% if(elements.ESTADO==1){ %>
                       <input value="Inhabilitar" class="btn btn-danger" type="submit">
-                        
+
                       </input>
                       <% }else{ %>
-                        <input class="btn btn-success" type="submit" value="Habilitar">  </input>
+                        <input class="btn btn-success" type="submit" value="Habilitar"> </input>
                         <% } %>
                   </td>
-                </tr>
-              </form>
-                <% }) %>
+                </form>
+
+                <td>
+
+<!-- //////////////////////// -->
+                  <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Editar
+                  </button>
+                  
+                  <!-- Modal -->
+                  <div class="modal fade text-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">CODIGO: <%= elements.COD_PLAN %></h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <form action="guardarReceta" method="POST">
+                            <div class="mb-3">
+                              <label for="exampleFormControlInput1" class="form-label" name="NOMBRE">Nombre</label>
+                              <input type="text" class="form-control" id="exampleFormControlInput1" name="NOMBRE" value="<%= elements.NOMBRE %>">
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
+                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="DESCRIPCION"></textarea>
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleFormControlTextarea1" class="form-label">Ingredientes</label>
+                              <input class="form-control" id="exampleFormControlInput1" name="INGREDIENTES">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                          <button type="submit" class="btn btn-primary">Crear</button>
+                        </div>
+                      </form>
+                      </div>
+                    </div>
+                  </div>
+<!-- //////////////////////// -->
+                  </input>
+                </td>
+
+              </tr>
+
+              <% }) %>
                 <form id="generarForm" method="POST" action="/admin/generarPdfPlan">
                   <input type="hidden" name="datos">
                   <button class="btn btn-danger" type="submit">
