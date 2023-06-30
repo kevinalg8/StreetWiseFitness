@@ -43,7 +43,7 @@ export const createPlanes =async(req, res) => {
           TELEFONO: req.body.TELEFONO
       }
       let metodo = "POST";
-      let url ="http://localhost:3000/plan/createPlan";
+      let url = process.env.URL_BACKEND + 'plan/createPlan';
       let option = {
           method: metodo,
           headers: {
@@ -67,7 +67,7 @@ export const createPlanes =async(req, res) => {
 
 export const getPlanes = async (req, res) => {
   try {
-    let ruta = 'http://localhost:3000/plan/AllPlans';
+    let ruta =  process.env.URL_BACKEND + '/plan/AllPlans';
     let option = {
       method: "GET"
     };
@@ -90,7 +90,7 @@ export const getPlanes = async (req, res) => {
 
 export const getAllplanes = async (req, res) => {
   try {
-    let ruta = 'http://localhost:3000/plan/AllPlans';
+    let ruta = process.env.URL_BACKEND + '/plan/AllPlans';
     let option = {
       method: "GET"
     };

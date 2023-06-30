@@ -58,7 +58,7 @@ var createPlanes = /*#__PURE__*/function () {
             TELEFONO: req.body.TELEFONO
           };
           metodo = "POST";
-          url = "http://localhost:3000/plan/createPlan";
+          url = process.env.URL_BACKEND + 'plan/createPlan';
           option = {
             method: metodo,
             headers: {
@@ -105,7 +105,7 @@ var getPlanes = /*#__PURE__*/function () {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           _context2.prev = 0;
-          ruta = 'http://localhost:3000/plan/AllPlanUser';
+          ruta = process.env.URL_BACKEND + '/plan/AllPlans';
           option = {
             method: "GET"
           };
@@ -123,7 +123,7 @@ var getPlanes = /*#__PURE__*/function () {
           res.render("admin-plan", {
             "plans": planes
           });
-          console.log(planes);
+          console.log("hola");
           _context2.next = 14;
           break;
         case 11:
@@ -148,7 +148,7 @@ var getAllplanes = /*#__PURE__*/function () {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
           _context3.prev = 0;
-          ruta = 'http://localhost:3000/plan/AllPlans';
+          ruta = process.env.URL_BACKEND + '/plan/AllPlans';
           option = {
             method: "GET"
           };
@@ -247,7 +247,7 @@ var generarPdfPlan = /*#__PURE__*/function () {
         case 0:
           _context5.prev = 0;
           _context5.next = 3;
-          return _axios["default"].get('http://localhost:3000/plan/AllPlanUser');
+          return _axios["default"].get('http://localhost:3000/plan/AllPlans');
         case 3:
           response = _context5.sent;
           usuarioslData = response.data[0]; // Obtener el primer elemento del arreglo
@@ -288,9 +288,9 @@ var generarPdfPlan = /*#__PURE__*/function () {
 
           // Crear la tabla
           table = {
-            headers: ['ID', 'ID USUARIO', 'ID PLAN', 'NOMBRE', 'DESCRIPCION'],
+            headers: ['ID', 'NOMBRE', 'DESCRIPCION', 'TELEFONO', 'ESTADO'],
             rows: usuarioslData.map(function (planes) {
-              return [planes.COD_USERPLAN, planes.COD_USUARIO, planes.COD_PLAN, planes.NOMBRE, planes.DESCRIPCION];
+              return [planes.COD_PLAN, planes.NOMBRE, planes.DESCRIPCION, planes.TELEFONO, planes.ESTADO];
             })
           }; // Agregar la tabla al documento con un tamaño de letra más pequeño
           _context5.next = 25;
@@ -341,7 +341,7 @@ var generarExcelPlan = /*#__PURE__*/function () {
         case 0:
           _context6.prev = 0;
           _context6.next = 3;
-          return _axios["default"].get('http://localhost:3000/plan/AllPlanUser');
+          return _axios["default"].get('http://localhost:3000/plan/AllPlans');
         case 3:
           response = _context6.sent;
           usuarioData = response.data[0]; // Obtener el primer elemento del arreglo
@@ -350,44 +350,44 @@ var generarExcelPlan = /*#__PURE__*/function () {
           worksheet = workbook.addWorksheet('Usuarios'); // Mostrar información por consola
           console.log('Información del Plan:');
           usuarioData.forEach(function (planes) {
-            console.log("ID: ".concat(planes.COD_USERPLAN));
-            console.log("Nombre del usuario: ".concat(planes.COD_USUARIO));
-            console.log("Apellido del usuario: ".concat(planes.COD_PLAN));
-            console.log("Fecha nacimiento del usuario: ".concat(planes.NOMBRE));
-            console.log("Correo del usuario: ".concat(planes.DESCRIPCION));
+            console.log("ID: ".concat(planes.COD_PLAN));
+            console.log("NOMBRE: ".concat(planes.NOMBRE));
+            console.log("DESCRIPCION: ".concat(planes.DESCRIPCION));
+            console.log("TELEFONO: ".concat(planes.TELEFONO));
+            console.log("ESTADO: ".concat(planes.ESTADO));
           });
 
           // Agregar encabezados de columna
           worksheet.columns = [{
             header: 'ID',
-            key: 'COD_USERPLAN',
+            key: 'COD_PLAN',
             width: 10
           }, {
-            header: 'ID usuario ',
-            key: 'COD_USUARIO',
+            header: 'NOMBRE ',
+            key: 'NOMBRE',
             width: 20
           }, {
-            header: 'ID plan',
-            key: 'COD_PLAN',
-            width: 15
-          }, {
-            header: 'Nombre',
-            key: 'NOMBRE',
-            width: 15
-          }, {
-            header: 'Descripcion',
+            header: 'DESCRIPCION',
             key: 'DESCRIPCION',
-            width: 100
+            width: 15
+          }, {
+            header: 'TELEFONO',
+            key: 'TELEFONO',
+            width: 15
+          }, {
+            header: 'ESTADO',
+            key: 'ESTADO',
+            width: 10
           }];
 
           // Agregar filas con datos
           usuarioData.forEach(function (planes) {
             worksheet.addRow({
-              COD_USERPLAN: planes.COD_USERPLAN,
-              COD_USUARIO: planes.COD_USUARIO,
               COD_PLAN: planes.COD_PLAN,
               NOMBRE: planes.NOMBRE,
-              DESCRIPCION: planes.DESCRIPCION
+              DESCRIPCION: planes.DESCRIPCION,
+              TELEFONO: planes.TELEFONO,
+              ESTADO: planes.ESTADO
             });
           });
 

@@ -34,7 +34,7 @@ export const loginUsuario = async (req, res) => {
       CORREO: req.body.CORREO,
       CONTRASENA: req.body.CONTRASENA
     }
-    let ruta = process.env.API_URL + '/consult';
+    let ruta = process.env.URL_BACKEND  + 'api/consult';
     let option = {
       method: "POST",
       headers: {

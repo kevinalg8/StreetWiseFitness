@@ -16,16 +16,17 @@ var admin = (0, _express.Router)();
 admin.get('/', _middleware.validateToken, controllers.getUsuarios);
 
 // PLANES
+
 admin.get('/CrearPlanes', _middleware.validateToken, function (req, res) {
   res.render("createPlan");
 });
 admin.post('/CrearElPlan', _middleware.validateToken, planControllers.createPlanes);
 admin.post('/disable-plan', _middleware.validateToken, planControllers.disablePlan);
+admin.get('/planes', _middleware.validateToken, planControllers.getPlanes);
 
 // USUARIOS
 admin.post('/disable-user', _middleware.validateToken, controllers.inhabilitar);
 admin.get('/cerrarSesion', _middleware.validateToken, controllers.cerrarSesion);
-admin.get('/planes', _middleware.validateToken, planControllers.getPlanes);
 
 // RECETAS
 admin.get('/receta', _middleware.validateToken, recetaControllers.getReceta);

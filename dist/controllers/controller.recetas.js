@@ -164,7 +164,7 @@ var disableReceta = /*#__PURE__*/function () {
             ESTADO: estado
           };
           console.log(data);
-          ruta = "http://localhost:3000/recipe/rec/".concat(req.query.id);
+          ruta = "http://localhost:3000/recipes/rec/".concat(req.query.id);
           option = {
             method: "PATCH",
             headers: {
@@ -210,7 +210,7 @@ var generarPdfReceta = /*#__PURE__*/function () {
         case 0:
           _context5.prev = 0;
           _context5.next = 3;
-          return _axios["default"].get('http://localhost:3000/recipe/AllRecipe');
+          return _axios["default"].get('http://localhost:3000/recipes/AllRecipe');
         case 3:
           response = _context5.sent;
           usuarioslData = response.data[0]; // Obtener el primer elemento del arreglo
@@ -251,9 +251,9 @@ var generarPdfReceta = /*#__PURE__*/function () {
 
           // Crear la tabla
           table = {
-            headers: ['ID', 'NOMBRE', 'DESCRIPCION', 'ID USUARIO', 'CORREO'],
+            headers: ['ID', 'NOMBRE', 'DESCRIPCION', 'INGREDIENTES'],
             rows: usuarioslData.map(function (recetas) {
-              return [recetas.COD_RECETA, recetas.NOMBRE, recetas.DESCRIPCION, recetas.COD_USUARIO, recetas.CORREO];
+              return [recetas.COD_RECETA, recetas.NOMBRE, recetas.DESCRIPCION, recetas.INGREDIENTES];
             })
           }; // Agregar la tabla al documento con un tamaño de letra más pequeño
           _context5.next = 25;
@@ -304,20 +304,19 @@ var generarExcelReceta = /*#__PURE__*/function () {
         case 0:
           _context6.prev = 0;
           _context6.next = 3;
-          return _axios["default"].get('http://localhost:3000/recipe/AllRecipe');
+          return _axios["default"].get('http://localhost:3000/recipes/AllRecipe');
         case 3:
           response = _context6.sent;
           usuarioData = response.data[0]; // Obtener el primer elemento del arreglo
           // Crear un nuevo libro de Excel
           workbook = new _exceljs["default"].Workbook();
-          worksheet = workbook.addWorksheet('Usuarios'); // Mostrar información por consola
-          console.log('Información del Plan:');
+          worksheet = workbook.addWorksheet('Recetas'); // Mostrar información por consola
+          console.log('Información de recetas:');
           usuarioData.forEach(function (recetas) {
             console.log("ID: ".concat(recetas.COD_RECETA));
             console.log("NOMBRE: ".concat(recetas.NOMBRE));
             console.log("DESCRIPCION: ".concat(recetas.DESCRIPCION));
-            console.log("COD_USUARIO: ".concat(recetas.COD_USUARIO));
-            console.log("CORREO: ".concat(recetas.CORREO));
+            console.log("INGREDIENTES: ".concat(recetas.INGREDIENTES));
           });
 
           // Agregar encabezados de columna
@@ -326,21 +325,21 @@ var generarExcelReceta = /*#__PURE__*/function () {
             key: 'COD_RECETA',
             width: 10
           }, {
-            header: 'ID usuario ',
+            header: 'NOMBRE ',
             key: 'NOMBRE',
             width: 20
           }, {
-            header: 'ID plan',
+            header: 'DESCRIPCION',
             key: 'DESCRIPCION',
             width: 15
           }, {
-            header: 'Nombre',
-            key: 'COD_USUARIO',
+            header: 'INGREDIENTES',
+            key: 'INGREDIENTES',
             width: 15
           }, {
-            header: 'Descripcion',
-            key: 'CORREO',
-            width: 100
+            header: 'ESTADO',
+            key: 'ESTADO',
+            width: 10
           }];
 
           // Agregar filas con datos
@@ -349,8 +348,8 @@ var generarExcelReceta = /*#__PURE__*/function () {
               COD_RECETA: planes.COD_RECETA,
               NOMBRE: planes.NOMBRE,
               DESCRIPCION: planes.DESCRIPCION,
-              COD_USUARIO: planes.COD_USUARIO,
-              CORREO: planes.CORREO
+              COD_USUARIO: planes.INGREDIENTES,
+              ESTADO: planes.ESTADO
             });
           });
 

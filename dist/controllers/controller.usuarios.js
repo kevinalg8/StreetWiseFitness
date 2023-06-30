@@ -69,7 +69,7 @@ var loginUsuario = /*#__PURE__*/function () {
             CORREO: req.body.CORREO,
             CONTRASENA: req.body.CONTRASENA
           };
-          ruta = process.env.API_URL + '/consult';
+          ruta = process.env.URL_BACKEND + 'api/consult';
           option = {
             method: "POST",
             headers: {
