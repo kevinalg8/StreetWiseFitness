@@ -14,11 +14,11 @@ admin.get('/',validateToken,controllers.getUsuarios)
 admin.get('/CrearPlanes',validateToken,(req,res)=>{res.render("createPlan")})
 admin.post('/CrearElPlan',validateToken,planControllers.createPlanes)
 admin.post('/disable-plan',validateToken,planControllers.disablePlan)
+admin.get('/planes',validateToken,planControllers.getPlanes)
 
 // USUARIOS
 admin.post('/disable-user',validateToken,controllers.inhabilitar)
 admin.get('/cerrarSesion',validateToken,controllers.cerrarSesion)
-admin.get('/planes',validateToken,planControllers.getPlanes)
 
 // RECETAS
 admin.get('/receta',validateToken,recetaControllers.getReceta)

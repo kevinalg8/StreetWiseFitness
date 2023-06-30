@@ -46,6 +46,7 @@
         <div class="container-fluid">
           <div class="cards-wrapper">
             <% recipesUser.forEach( function(elements) { %>
+              <% if(elements.ESTADO == 1){ %>
               <div class="card bg-light-subtle mt-4 shadow">
                 <img src="../img/receta4.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -61,7 +62,8 @@
                   </div>
                 </div>
               </div>
-              <% }) %>
+
+              <%} }) %>
           </div>
         </div>
 
