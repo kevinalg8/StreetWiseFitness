@@ -9,29 +9,54 @@
 <body>
   <%- include('./partials/navbar.ejs'); %>
   <%- include('./partials/nav_img.ejs'); %>
-  <div class="card-group cards-wrapper">
-    <div id="about" class="about">
-      <div class="container">
-        <div class="card-group cards-wrapper">
-          <% planes.forEach( function(elements) { %>
-            <div class="card" style="width: 20rem">
-              <div class="card-body">
-                <h5 class="card-title"><%= elements.NOMBRE %></h5>
-                <p class="card-text"><%= elements.DESCRIPCION %></p>
+  <div id="about" class="about">
+    <div class="container">
+      <div class="row gy-5">
+        <div class="col-xl-7">
+          <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/sup.jpg" class="w-100" alt="...">
               </div>
-              <div class="card-footer">
-                <a target="_blank" href="" class="btn btn-primary"><%= elements.TELEFONO %></a>
+              <div class="carousel-item">
+                <img src="img/equi.jpg" class="w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/vit.jpg" class="w-100" alt="...">
               </div>
             </div>
-            <% }); %>
+          </div>
+        </div>
+        <div class="col-xl-5 content">
+          <h3>Comparte tu Plan</h3>
+          <h2> Crea tu propio plan y permite que te contacten</h2>
+          <p>Crea tu propio plan y permite que los demás te contacten directamente desde nuestra web! Con nuestro servicio, puedes diseñar un plan personalizado en el que puedes subir el nombre, descripción y tu número de teléfono de contacto. Esta función te brinda la oportunidad de promocionar tu plan y permitir que cualquier persona interesada pueda comunicarse contigo fácilmente.</p>
+            <!-- Button trigger modal -->
+          <button type="button" class="btn create-plan" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Crear Plan
+          </button>
         </div>
       </div>
+    </div>  
+  </div>
+  <div class="container-fluid">
+    <div class="cards-wrapper">
+      <% planes.forEach(function(elements) { %>
+        <div class="card bg-light-subtle mt-4 shadow">
+          <img src="../img/plan3.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <div class="text-section">
+              <h5 class="card-title fw-bold"><%= elements.NOMBRE %></h5>
+              <p class="card-text">S<%= elements.DESCRIPCION %></p>
+              <p class="card-text">S<%= elements.TELEFONO %></p>
+            </div>
+          </div>
+        </div>
+      <% }); %>
     </div>
   </div>
-<!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Crear Plan
-  </button>
+  
+  
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
