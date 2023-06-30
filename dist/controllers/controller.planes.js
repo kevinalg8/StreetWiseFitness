@@ -58,7 +58,7 @@ var createPlanes = /*#__PURE__*/function () {
             TELEFONO: req.body.TELEFONO
           };
           metodo = "POST";
-          url = process.env.URL_BACKEND + 'plan/createPlan';
+          url = process.env.URL_BACKEND + '/plan/createPlan';
           option = {
             method: metodo,
             headers: {

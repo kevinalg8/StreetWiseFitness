@@ -43,7 +43,7 @@ export const createPlanes =async(req, res) => {
           TELEFONO: req.body.TELEFONO
       }
       let metodo = "POST";
-      let url = process.env.URL_BACKEND + 'plan/createPlan';
+      let url = process.env.URL_BACKEND + '/plan/createPlan';
       let option = {
           method: metodo,
           headers: {
