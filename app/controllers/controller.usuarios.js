@@ -68,7 +68,7 @@ export const loginUsuario = async (req, res) => {
           }
           if (datosDb.COD_ROL == 3) {
             try {
-              let ruta = `${process.env.URL_BACKEND}/api/user`;
+              let ruta =  `${process.env.URL_BACKEND}/api/users`;
               let option = {
                 method: "GET"
               };

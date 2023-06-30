@@ -118,7 +118,7 @@ var loginUsuario = /*#__PURE__*/function () {
             break;
           }
           _context2.prev = 15;
-          _ruta = "".concat(process.env.URL_BACKEND, "/api/user");
+          _ruta = "".concat(process.env.URL_BACKEND, "/api/users");
           _option = {
             method: "GET"
           };
