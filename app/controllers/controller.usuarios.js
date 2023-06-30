@@ -7,7 +7,7 @@ import excel from "exceljs";
 
 export const getUsuarios = async (req, res) => {
   try {
-    let ruta = process.env.API_URL + '/users';
+    let ruta = process.env.URL_BACKEND + '/api/users';
     let option = {
       method: "GET"
     };
@@ -34,7 +34,7 @@ export const loginUsuario = async (req, res) => {
       CORREO: req.body.CORREO,
       CONTRASENA: req.body.CONTRASENA
     }
-    let ruta = process.env.URL_BACKEND  + 'api/consult';
+    let ruta = process.env.URL_BACKEND  + '/api/consult';
     let option = {
       method: "POST",
       headers: {
@@ -68,7 +68,7 @@ export const loginUsuario = async (req, res) => {
           }
           if (datosDb.COD_ROL == 3) {
             try {
-              let ruta = 'http://localhost:3000/api/users';
+              let ruta = `${process.env.URL_BACKEND}/api/user`;
               let option = {
                 method: "GET"
               };
@@ -115,7 +115,7 @@ export const inhabilitar = async (req, res) => {
       ESTADO: estado
     }
     console.log(data);
-    let ruta = `http://localhost:3000/api/users/${req.query.id}`;
+    let ruta =  `${process.env.URL_BACKEND}/api/users/${req.query.id}`;
     let option = {
       method: "PATCH",
       headers: {
@@ -151,7 +151,7 @@ export const cerrarSesion = (req,res)=>{
 export const generarPdf = async (req, res) => {
   try {
     // Hacer una solicitud GET a la API para obtener la información
-    const response = await axios.get(process.env.API_URL + '/users');
+    const response = await axios.get(process.env.URL_BACKEND + '/api/users');
     const usuarioslData = response.data[0]; // Obtener el primer elemento del arreglo
 
     // Crear un nuevo documento PDF
@@ -225,7 +225,7 @@ export const generarPdf = async (req, res) => {
 export const generarExcel = async (req, res) => {
   try {
     // Hacer una solicitud GET a la API para obtener la información
-    const response = await axios.get(process.env.API_URL + '/users');
+    const response = await axios.get(process.env.URL_BACKEND + '/api/users');
     const usuarioData = response.data[0]; // Obtener el primer elemento del arreglo
 
     // Crear un nuevo libro de Excel

@@ -6,7 +6,7 @@ import path from "path";
 
 export const getReceta = async (req, res) => {
     try {
-      let ruta = 'http://localhost:3000/recipes/AllRecipe';
+      let ruta =  process.env.URL_BACKEND + '/recipes/AllRecipe';
       let option = {
         method: "GET"
       };
@@ -38,7 +38,7 @@ export const crearReceta = async (req, res) => {
         INGREDIENTES: req.body.INGREDIENTES
       }
       let metodo = "POST";
-      let url = 'http://localhost:3000/recipes/rec';
+      let url =  process.env.URL_BACKEND + '/recipes/rec';
       let option = {
         method: metodo,
         headers: {
@@ -64,7 +64,7 @@ export const crearReceta = async (req, res) => {
 
 export const getRecetaUser = async (req, res) => {
   try {
-    let ruta = 'http://localhost:3000/recipes/AllRecipe';
+    let ruta =  process.env.URL_BACKEND + '/recipes/AllRecipe';
     let option = {
       method: "GET"
     };
@@ -96,7 +96,7 @@ export const disableReceta = async (req, res) => {
         ESTADO: estado
       }
       console.log(data);
-      let ruta = `http://localhost:3000/recipes/rec/${req.query.id}`;
+      let ruta =  `${process.env.URL_BACKEND}/recipes/rec${req.query.id}`
       let option = {
         method: "PATCH",
         headers: {
@@ -121,7 +121,7 @@ export const disableReceta = async (req, res) => {
 export const generarPdfReceta = async (req, res) => {
     try {
       // Hacer una solicitud GET a la API para obtener la información
-      const response = await axios.get('http://localhost:3000/recipes/AllRecipe');
+      const response = await axios.get(process.env.URL_BACKEND+ '/recipes/AllRecipe');
       const usuarioslData = response.data[0]; // Obtener el primer elemento del arreglo
   
       // Crear un nuevo documento PDF
@@ -193,7 +193,7 @@ doc.moveDown(2);
 export const generarExcelReceta = async (req, res) => {
     try {
       // Hacer una solicitud GET a la API para obtener la información
-      const response = await axios.get('http://localhost:3000/recipes/AllRecipe');
+      const response = await axios.get(process.env.URL_BACKEND + '/recipes/AllRecipe');
       const usuarioData = response.data[0]; // Obtener el primer elemento del arreglo
   
       // Crear un nuevo libro de Excel

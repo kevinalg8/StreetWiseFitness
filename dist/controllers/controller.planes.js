@@ -201,7 +201,7 @@ var disablePlan = /*#__PURE__*/function () {
             ESTADO: estado
           };
           console.log(data);
-          ruta = "http://localhost:3000/plan/disable/".concat(req.query.id);
+          ruta = "".concat(process.env.URL_BACKEND, "/plan/disable/").concat(req.query.id);
           option = {
             method: "PATCH",
             headers: {
@@ -247,7 +247,7 @@ var generarPdfPlan = /*#__PURE__*/function () {
         case 0:
           _context5.prev = 0;
           _context5.next = 3;
-          return _axios["default"].get('http://localhost:3000/plan/AllPlans');
+          return _axios["default"].get(process.env.URL_BACKEND + '/plan/AllPlans');
         case 3:
           response = _context5.sent;
           usuarioslData = response.data[0]; // Obtener el primer elemento del arreglo
@@ -341,7 +341,7 @@ var generarExcelPlan = /*#__PURE__*/function () {
         case 0:
           _context6.prev = 0;
           _context6.next = 3;
-          return _axios["default"].get('http://localhost:3000/plan/AllPlans');
+          return _axios["default"].get(process.env.URL_BACKEND + '/plan/AllPlans');
         case 3:
           response = _context6.sent;
           usuarioData = response.data[0]; // Obtener el primer elemento del arreglo

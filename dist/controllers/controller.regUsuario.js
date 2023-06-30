@@ -18,7 +18,7 @@ var insertUsuario = function insertUsuario(req, res) {
       COD_ROL: 1
     };
     var metodo = "POST";
-    var url = process.env.API_URL + '/users';
+    var url = process.env.URL_BACKEND + '/api/users';
     var option = {
       method: metodo,
       headers: {
@@ -53,7 +53,7 @@ var insertUsuario = function insertUsuario(req, res) {
     };
     console.log(_data);
     var _metodo = "POST";
-    var _url = process.env.API_URL + '/users';
+    var _url = process.env.URL_BACKEND + '/api/users';
     var _option = {
       method: _metodo,
       headers: {

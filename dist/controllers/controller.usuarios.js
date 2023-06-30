@@ -22,7 +22,7 @@ var getUsuarios = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          ruta = process.env.API_URL + '/users';
+          ruta = process.env.URL_BACKEND + '/api/users';
           option = {
             method: "GET"
           };
@@ -69,7 +69,7 @@ var loginUsuario = /*#__PURE__*/function () {
             CORREO: req.body.CORREO,
             CONTRASENA: req.body.CONTRASENA
           };
-          ruta = process.env.URL_BACKEND + 'api/consult';
+          ruta = process.env.URL_BACKEND + '/api/consult';
           option = {
             method: "POST",
             headers: {
@@ -118,7 +118,7 @@ var loginUsuario = /*#__PURE__*/function () {
             break;
           }
           _context2.prev = 15;
-          _ruta = 'http://localhost:3000/api/users';
+          _ruta = "".concat(process.env.URL_BACKEND, "/api/user");
           _option = {
             method: "GET"
           };
@@ -191,7 +191,7 @@ var inhabilitar = /*#__PURE__*/function () {
             ESTADO: estado
           };
           console.log(data);
-          ruta = "http://localhost:3000/api/users/".concat(req.query.id);
+          ruta = "".concat(process.env.URL_BACKEND, "/api/users/").concat(req.query.id);
           option = {
             method: "PATCH",
             headers: {
@@ -251,7 +251,7 @@ var generarPdf = /*#__PURE__*/function () {
         case 0:
           _context4.prev = 0;
           _context4.next = 3;
-          return _axios["default"].get(process.env.API_URL + '/users');
+          return _axios["default"].get(process.env.URL_BACKEND + '/api/users');
         case 3:
           response = _context4.sent;
           usuarioslData = response.data[0]; // Obtener el primer elemento del arreglo
@@ -346,7 +346,7 @@ var generarExcel = /*#__PURE__*/function () {
         case 0:
           _context5.prev = 0;
           _context5.next = 3;
-          return _axios["default"].get(process.env.API_URL + '/users');
+          return _axios["default"].get(process.env.URL_BACKEND + '/api/users');
         case 3:
           response = _context5.sent;
           usuarioData = response.data[0]; // Obtener el primer elemento del arreglo

@@ -12,7 +12,7 @@ export const insertUsuario =(req, res) => {
             COD_ROL: 1
         }
         let metodo = "POST";
-        let url = process.env.API_URL + '/users';
+        let url = process.env.URL_BACKEND + '/api/users';
         let option = {
             method: metodo,
             headers: {
@@ -43,7 +43,7 @@ export const insertUsuario =(req, res) => {
         }
         console.log(data);
         let metodo = "POST";
-        let url = process.env.API_URL + '/users';
+        let url = process.env.URL_BACKEND + '/api/users';
 
         let option = {
             method: metodo,

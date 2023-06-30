@@ -123,7 +123,7 @@ export const disablePlan = async (req, res) => {
       ESTADO: estado
     }
     console.log(data);
-    let ruta = `http://localhost:3000/plan/disable/${req.query.id}`;
+    let ruta = `${process.env.URL_BACKEND}/plan/disable/${req.query.id}`;
     let option = {
       method: "PATCH",
       headers: {
@@ -148,7 +148,7 @@ export const disablePlan = async (req, res) => {
 export const generarPdfPlan = async (req, res) => {
   try {
     // Hacer una solicitud GET a la API para obtener la información
-    const response = await axios.get('http://localhost:3000/plan/AllPlans');
+    const response = await axios.get(process.env.URL_BACKEND+'/plan/AllPlans');
     const usuarioslData = response.data[0]; // Obtener el primer elemento del arreglo
 
     // Crear un nuevo documento PDF
@@ -219,7 +219,7 @@ doc.moveDown(2);
 export const generarExcelPlan = async (req, res) => {
   try {
     // Hacer una solicitud GET a la API para obtener la información
-    const response = await axios.get('http://localhost:3000/plan/AllPlans');
+    const response = await axios.get(process.env.URL_BACKEND +'/plan/AllPlans');
     const usuarioData = response.data[0]; // Obtener el primer elemento del arreglo
 
     // Crear un nuevo libro de Excel

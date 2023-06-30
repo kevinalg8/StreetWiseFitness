@@ -21,7 +21,7 @@ var getReceta = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          ruta = 'http://localhost:3000/recipes/AllRecipe';
+          ruta = process.env.URL_BACKEND + '/recipes/AllRecipe';
           option = {
             method: "GET"
           };
@@ -70,7 +70,7 @@ var crearReceta = /*#__PURE__*/function () {
               INGREDIENTES: req.body.INGREDIENTES
             };
             metodo = "POST";
-            url = 'http://localhost:3000/recipes/rec';
+            url = process.env.URL_BACKEND + '/recipes/rec';
             option = {
               method: metodo,
               headers: {
@@ -112,7 +112,7 @@ var getRecetaUser = /*#__PURE__*/function () {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
           _context3.prev = 0;
-          ruta = 'http://localhost:3000/recipes/AllRecipe';
+          ruta = process.env.URL_BACKEND + '/recipes/AllRecipe';
           option = {
             method: "GET"
           };
@@ -164,7 +164,7 @@ var disableReceta = /*#__PURE__*/function () {
             ESTADO: estado
           };
           console.log(data);
-          ruta = "http://localhost:3000/recipes/rec/".concat(req.query.id);
+          ruta = "".concat(process.env.URL_BACKEND, "/recipes/rec").concat(req.query.id);
           option = {
             method: "PATCH",
             headers: {
@@ -210,7 +210,7 @@ var generarPdfReceta = /*#__PURE__*/function () {
         case 0:
           _context5.prev = 0;
           _context5.next = 3;
-          return _axios["default"].get('http://localhost:3000/recipes/AllRecipe');
+          return _axios["default"].get(process.env.URL_BACKEND + '/recipes/AllRecipe');
         case 3:
           response = _context5.sent;
           usuarioslData = response.data[0]; // Obtener el primer elemento del arreglo
@@ -304,7 +304,7 @@ var generarExcelReceta = /*#__PURE__*/function () {
         case 0:
           _context6.prev = 0;
           _context6.next = 3;
-          return _axios["default"].get('http://localhost:3000/recipes/AllRecipe');
+          return _axios["default"].get(process.env.URL_BACKEND + '/recipes/AllRecipe');
         case 3:
           response = _context6.sent;
           usuarioData = response.data[0]; // Obtener el primer elemento del arreglo
