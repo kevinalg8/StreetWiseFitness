@@ -49,16 +49,17 @@
   </div>
 </div>
 <% recipesUser.forEach( function(elements) { %>
-  <div class="card" style="width: 20rem">
-    <div class="card-body">
-      <h5 class="card-title"><%= elements.NOMBRE %></h5>
-      <p class="card-text"><%= elements.DESCRIPCION %></p>
+    <div class="card" style="width: 20rem">
+      <div class="card-body">
+        <h5 class="card-title"><%= elements.NOMBRE %></h5>
+        <p class="card-text"><%= elements.DESCRIPCION %></p>
+      </div>
+      <div class="card-footer">
+        <a target="_blank" href="" class="btn btn-primary"><%= elements.INGREDIENTES %></a>
+      </div>
     </div>
-    <div class="card-footer">
-      <a target="_blank" href="" class="btn btn-primary"><%= elements.INGREDIENTES %></a>
-    </div>
-  </div>
   <% }) %>
+
 
 
 
