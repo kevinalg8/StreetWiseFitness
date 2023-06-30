@@ -80,7 +80,8 @@ export const getPlanes = async (req, res) => {
       .catch(err => console.error("Error en peticion: " + err));
 
     res.render("admin-plan", {
-      "plans": planes
+      "plans": planes,
+      "plans2": planes
     });
     console.log(planes);
   } catch (error) {
