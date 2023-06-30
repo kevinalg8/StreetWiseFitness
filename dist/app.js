@@ -12,6 +12,7 @@ var _path = _interopRequireDefault(require("path"));
 var url = _interopRequireWildcard(require("url"));
 var _loginRoutes = _interopRequireDefault(require("./routes/login.routes.js"));
 var _inicioRoutes = _interopRequireDefault(require("./routes/inicio.routes.js"));
+var _adminRoutes = _interopRequireDefault(require("./routes/admin.routes.js"));
 var _bodyParser = _interopRequireDefault(require("body-parser"));
 var _cookieParser = _interopRequireDefault(require("cookie-parser"));
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -36,6 +37,7 @@ app.use(_bodyParser["default"].urlencoded({
   extended: false
 }));
 app.use("/", _loginRoutes["default"]);
+app.use("/admin", _adminRoutes["default"]);
 app.use("/inicio", _inicioRoutes["default"]);
 var _default = app;
 exports["default"] = _default;

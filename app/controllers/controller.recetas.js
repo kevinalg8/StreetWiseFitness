@@ -2,10 +2,11 @@ import fetch from "node-fetch";
 import axios from "axios";
 import PDFDocument from "pdfkit-table";
 import excel from "exceljs";
+import path from "path";
 
 export const getReceta = async (req, res) => {
     try {
-      let ruta = 'http://localhost:3000/recipe/AllRecipe';
+      let ruta = 'http://localhost:3000/recipes/AllRecipe';
       let option = {
         method: "GET"
       };
@@ -25,8 +26,63 @@ export const getReceta = async (req, res) => {
     } catch (error) {
       console.log(error);
     }
+    
 };
 
+export const crearReceta = async (req, res) => {
+  if(req.body.NOMBRE && req.body.DESCRIPCION){
+
+      let data = {
+        NOMBRE: req.body.NOMBRE,
+        DESCRIPCION: req.body.DESCRIPCION,
+        INGREDIENTES: req.body.INGREDIENTES
+      }
+      let metodo = "POST";
+      let url = 'http://localhost:3000/recipes/rec';
+      let option = {
+        method: metodo,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }
+
+    try {
+      const respuesta = fetch(url, option)
+          .then(response => response.json())
+          .then(data =>
+              //data:data
+              console.log(`Receta Creada`))
+          .catch(err => console.log(`Error: ${err}`))
+  } catch (error) {
+      console.log(`error en ${error}`);
+  }
+  res.redirect("/recetas")
+  }
+
+};
+
+export const getRecetaUser = async (req, res) => {
+  try {
+    let ruta = 'http://localhost:3000/recipes/AllRecipe';
+    let option = {
+      method: "GET"
+    };
+    let Recetas = {};
+    const resultado = await fetch(ruta, option)
+      .then(response => response.json())
+      .then(data => {
+        Recetas = data[0];
+      })
+      .catch(err => console.error("Error en peticion: " + err));
+      
+    res.render("recipes", {
+      "recipesUser": Recetas
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const disableReceta = async (req, res) => {
     let estado = req.query.estado
@@ -60,9 +116,9 @@ export const disableReceta = async (req, res) => {
     } catch (error) {
       console.log(error);
     }
-  };
+};
 
-  export const generarPdfReceta = async (req, res) => {
+export const generarPdfReceta = async (req, res) => {
     try {
       // Hacer una solicitud GET a la API para obtener la información
       const response = await axios.get('http://localhost:3000/recipe/AllRecipe');
@@ -77,8 +133,24 @@ export const disableReceta = async (req, res) => {
       doc.pipe(res);
 
   
-      const pageWidth = doc.page.width;
-      const pageHeight = doc.page.height;
+// Agregar el logo del proyecto
+const logoHeight = 50;
+const logoWidth = 50;
+const __dirname = path.resolve()
+const imagePath = path.resolve(path.join(__dirname,'public', 'img', 'Logo.png')) ;
+console.log(imagePath);
+const pageWidth = doc.page.width;
+
+const logoX = (pageWidth - logoWidth) / 2;
+const logoY = 30;
+
+const pageHeight = doc.page.height;
+
+
+doc.image(imagePath, logoX, logoY, { width: logoWidth, height: logoHeight });
+
+// Agregar espacio después de la imagen
+doc.moveDown(2);
   
   
   
@@ -117,9 +189,9 @@ export const disableReceta = async (req, res) => {
       console.error(error);
       res.status(500).send('Error al generar el PDF');
     }
-  };
+};
 
-  export const generarExcelReceta = async (req, res) => {
+export const generarExcelReceta = async (req, res) => {
     try {
       // Hacer una solicitud GET a la API para obtener la información
       const response = await axios.get('http://localhost:3000/recipe/AllRecipe');
@@ -171,36 +243,5 @@ export const disableReceta = async (req, res) => {
       console.error(error);
       res.status(500).send('Error al generar el archivo Excel');
     }
-  };
+};
   
-  export const crearReceta = async (req, res) => {
-    if(req.body.NOMBRE && req.body.DESCRIPCION){
-  
-        let data = {
-          NOMBRE: req.body.NOMBRE,
-          DESCRIPCION: req.body.DESCRIPCION
-        }
-        let metodo = "POST";
-        let url = process.env.API_URL + '/rec';
-        let option = {
-          method: metodo,
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data)
-      }
-  
-      try {
-        const respuesta = fetch(url, option)
-            .then(response => response.json())
-            .then(data =>
-                //data:data
-                console.log(`Receta Creada`))
-            .catch(err => console.log(`Error: ${err}`))
-    } catch (error) {
-        console.log(`error en ${error}`);
-    }
-    //res.redirect("/")
-    }
-  
-  }

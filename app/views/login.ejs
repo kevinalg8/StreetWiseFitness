@@ -13,7 +13,7 @@
       <div class="col-md-9 card mx-auto d-flex flex-row px-0">
         <div class="p-left d-md-flex flex-column d-none">
           <h1 class="text-white text text-center">Iniciar sesion</h1>
-          <p class="text-white text-p">Lorem ipsum dolor sit, amet consectetur adipisicing elit. </p>
+          <p class="text-white text-p">Conectados por el bienestar: Unidos en una comunidad fitness sin límites </p>
           <a href="/RegistroUsuario"><input type="button" class="btn btn-p d-block w-50 mt-3"
               value='Registro Usuario'></a>
         </div>
@@ -41,23 +41,23 @@
         </div>
       </div>
 
-      
-      <% if (Alert === "1") { %>
+
+      <% if (Alert==="1" ) { %>
         <script>
           Swal.fire({
-            icon: 'Error',
+            icon: 'error',
             title: 'Oops...',
-            text: 'Contraseña Incorrecta'
-          });
+            text: 'Datos Incorrectos',
+          })
         </script>
-      <% } %>
+        <% } %>
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-      <script src="sweetalert2.all.min.js"></script>
-      
-      
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+          <script src="sweetalert2.all.min.js"></script>
+
+
   </body>
 
 </html>
