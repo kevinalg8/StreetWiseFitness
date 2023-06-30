@@ -13,9 +13,9 @@ inicio.get('/trenInferior',validateToken,controllerProds.getProdinf)
 inicio.get('/trenSuperior',validateToken,controllerProds.getProdsup)
 inicio.get('/plangeneral',validateToken,controllerProds.getProdgen)
 inicio.get('/recetas',validateToken,planRecetas.getRecetaUser)
-inicio.get('/createPlan', planControllers.getAllplanes)
-inicio.post('/guardarPlan', planControllers.createPlanes)
-inicio.post('/guardarReceta',planRecetas.crearReceta)
+inicio.get('/createPlan',validateToken ,planControllers.getAllplanes)
+inicio.post('/guardarPlan',validateToken,planControllers.createPlanes)
+inicio.post('/guardarReceta',validateToken,planRecetas.crearReceta)
 inicio.get('/cerrarSesion',controllers.cerrarSesion)
 
 export default inicio;
