@@ -88,6 +88,7 @@ export const loginUsuario = async (req, res) => {
             } catch (error) {
               console.log(error);
             }
+            res.redirect("/admin")
           }
         }else{
           console.log("Usuario Inhabilitado");

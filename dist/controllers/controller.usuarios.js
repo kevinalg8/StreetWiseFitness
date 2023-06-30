@@ -89,11 +89,11 @@ var loginUsuario = /*#__PURE__*/function () {
         case 7:
           resultado = _context2.sent;
           if (!(datosDb && dataLogin)) {
-            _context2.next = 35;
+            _context2.next = 36;
             break;
           }
           if (!(dataLogin.CORREO === datosDb.CORREO && dataLogin.CONTRASENA === datosDb.CONTRASENA)) {
-            _context2.next = 32;
+            _context2.next = 33;
             break;
           }
           token = _jsonwebtoken["default"].sign(datosDb, process.env.SECRET_KEY, {
@@ -101,7 +101,7 @@ var loginUsuario = /*#__PURE__*/function () {
           });
           res.cookie("SWF", token);
           if (!(datosDb.ESTADO == 1)) {
-            _context2.next = 31;
+            _context2.next = 32;
             break;
           }
           if (datosDb.COD_ROL === 1 || datosDb.COD_ROL === 2) {
@@ -114,7 +114,7 @@ var loginUsuario = /*#__PURE__*/function () {
             console.log(datosDb.COD_USUARIO);
           }
           if (!(datosDb.COD_ROL == 3)) {
-            _context2.next = 29;
+            _context2.next = 30;
             break;
           }
           _context2.prev = 15;
@@ -145,29 +145,31 @@ var loginUsuario = /*#__PURE__*/function () {
           _context2.t0 = _context2["catch"](15);
           console.log(_context2.t0);
         case 29:
-          _context2.next = 32;
+          res.redirect("/admin");
+        case 30:
+          _context2.next = 33;
           break;
-        case 31:
-          console.log("Usuario Inhabilitado");
         case 32:
+          console.log("Usuario Inhabilitado");
+        case 33:
           console.log(dataLogin);
-          _context2.next = 36;
+          _context2.next = 37;
           break;
-        case 35:
+        case 36:
           //console.log(dataLogin,comparacionEncriptacion);
           res.redirect("/registroUsuario");
-        case 36:
-          _context2.next = 41;
+        case 37:
+          _context2.next = 42;
           break;
-        case 38:
-          _context2.prev = 38;
+        case 39:
+          _context2.prev = 39;
           _context2.t1 = _context2["catch"](0);
           console.log(_context2.t1);
-        case 41:
+        case 42:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[0, 38], [15, 26]]);
+    }, _callee2, null, [[0, 39], [15, 26]]);
   }));
   return function loginUsuario(_x3, _x4) {
     return _ref2.apply(this, arguments);
