@@ -148,7 +148,7 @@ export const disablePlan = async (req, res) => {
 export const generarPdfPlan = async (req, res) => {
   try {
     // Hacer una solicitud GET a la API para obtener la información
-    const response = await axios.get('http://localhost:3000/plan/AllPlanUser');
+    const response = await axios.get('http://localhost:3000/plan/AllPlans');
     const usuarioslData = response.data[0]; // Obtener el primer elemento del arreglo
 
     // Crear un nuevo documento PDF
@@ -187,14 +187,14 @@ doc.moveDown(2);
 
     // Crear la tabla
     const table = {
-      headers: ['ID', 'ID USUARIO', 'ID PLAN', 'NOMBRE', 'DESCRIPCION'],
+      headers: ['ID', 'NOMBRE', 'DESCRIPCION', 'TELEFONO', 'ESTADO'],
       rows: usuarioslData.map(planes => 
         [
-        planes.COD_USERPLAN,
-        planes.COD_USUARIO,
         planes.COD_PLAN,
         planes.NOMBRE,
-        planes.DESCRIPCION
+        planes.DESCRIPCION,
+        planes.TELEFONO,
+        planes.ESTADO
       ])
     };
 
@@ -219,7 +219,7 @@ doc.moveDown(2);
 export const generarExcelPlan = async (req, res) => {
   try {
     // Hacer una solicitud GET a la API para obtener la información
-    const response = await axios.get('http://localhost:3000/plan/AllPlanUser');
+    const response = await axios.get('http://localhost:3000/plan/AllPlans');
     const usuarioData = response.data[0]; // Obtener el primer elemento del arreglo
 
     // Crear un nuevo libro de Excel
@@ -229,30 +229,30 @@ export const generarExcelPlan = async (req, res) => {
      // Mostrar información por consola
      console.log('Información del Plan:');
      usuarioData.forEach((planes) => {
-       console.log(`ID: ${planes.COD_USERPLAN}`);
-       console.log(`Nombre del usuario: ${planes.COD_USUARIO}`);
-       console.log(`Apellido del usuario: ${planes.COD_PLAN}`);
-       console.log(`Fecha nacimiento del usuario: ${planes.NOMBRE}`);
-       console.log(`Correo del usuario: ${planes.DESCRIPCION}`);
+       console.log(`ID: ${planes.COD_PLAN}`);
+       console.log(`NOMBRE: ${planes.NOMBRE}`);
+       console.log(`DESCRIPCION: ${planes.DESCRIPCION}`);
+       console.log(`TELEFONO: ${planes.TELEFONO}`);
+       console.log(`ESTADO: ${planes.ESTADO}`);
      });
 
     // Agregar encabezados de columna
     worksheet.columns = [
-      { header: 'ID', key: 'COD_USERPLAN', width: 10 },
-      { header: 'ID usuario ', key: 'COD_USUARIO', width: 20 },
-      { header: 'ID plan', key: 'COD_PLAN', width: 15 },
-      { header: 'Nombre', key: 'NOMBRE', width: 15 },
-      { header: 'Descripcion', key: 'DESCRIPCION', width: 100 },
+      { header: 'ID', key: 'COD_PLAN', width: 10 },
+      { header: 'NOMBRE ', key: 'NOMBRE', width: 20 },
+      { header: 'DESCRIPCION', key: 'DESCRIPCION', width: 15 },
+      { header: 'TELEFONO', key: 'TELEFONO', width: 15 },
+      { header: 'ESTADO', key: 'ESTADO', width: 10 },
     ];
 
     // Agregar filas con datos
     usuarioData.forEach((planes) => {
       worksheet.addRow({
-        COD_USERPLAN: planes.COD_USERPLAN,
-        COD_USUARIO: planes.COD_USUARIO,
         COD_PLAN: planes.COD_PLAN,
         NOMBRE: planes.NOMBRE,
-        DESCRIPCION: planes.DESCRIPCION
+        DESCRIPCION: planes.DESCRIPCION,
+        TELEFONO: planes.TELEFONO,
+        ESTADO: planes.ESTADO
       });
     });
 

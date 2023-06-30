@@ -9,7 +9,6 @@ const admin = Router();
 admin.get('/',validateToken,controllers.getUsuarios)
 
 // PLANES
-<<<<<<< HEAD
 admin.get('/CrearPlanes',(req,res)=>{res.render("createPlan")})
 admin.post('/CrearElPlan',planControllers.createPlanes)
 admin.post('/disable-plan',planControllers.disablePlan)
@@ -18,16 +17,6 @@ admin.get('/planes', planControllers.getPlanes)
 // USUARIOS
 admin.post('/disable-user',controllers.inhabilitar)
 admin.get('/cerrarSesion',controllers.cerrarSesion)
-=======
-admin.get('/CrearPlanes',validateToken,(req,res)=>{res.render("createPlan")})
-admin.post('/CrearElPlan',validateToken,planControllers.createPlanes)
-admin.post('/disable-plan',validateToken,planControllers.disablePlan)
-
-// USUARIOS
-admin.post('/disable-user',validateToken,controllers.inhabilitar)
-admin.get('/cerrarSesion',validateToken,controllers.cerrarSesion)
-admin.get('/planes',validateToken,planControllers.getPlanes)
->>>>>>> 7738cca6d1378f47c4c66ad65ce77662d3394f1d
 
 // RECETAS
 admin.get('/receta',validateToken,recetaControllers.getReceta)

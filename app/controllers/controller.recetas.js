@@ -96,7 +96,7 @@ export const disableReceta = async (req, res) => {
         ESTADO: estado
       }
       console.log(data);
-      let ruta = `http://localhost:3000/recipe/rec/${req.query.id}`;
+      let ruta = `http://localhost:3000/recipes/rec/${req.query.id}`;
       let option = {
         method: "PATCH",
         headers: {
@@ -121,7 +121,7 @@ export const disableReceta = async (req, res) => {
 export const generarPdfReceta = async (req, res) => {
     try {
       // Hacer una solicitud GET a la API para obtener la información
-      const response = await axios.get('http://localhost:3000/recipe/AllRecipe');
+      const response = await axios.get('http://localhost:3000/recipes/AllRecipe');
       const usuarioslData = response.data[0]; // Obtener el primer elemento del arreglo
   
       // Crear un nuevo documento PDF
@@ -162,14 +162,13 @@ doc.moveDown(2);
   
       // Crear la tabla
       const table = {
-        headers: ['ID', 'NOMBRE', 'DESCRIPCION', 'ID USUARIO', 'CORREO'],
+        headers: ['ID', 'NOMBRE', 'DESCRIPCION', 'INGREDIENTES'],
         rows: usuarioslData.map(recetas => 
           [
           recetas.COD_RECETA,
           recetas.NOMBRE,
           recetas.DESCRIPCION,
-          recetas.COD_USUARIO,
-          recetas.CORREO
+          recetas.INGREDIENTES
         ])
       };
   
@@ -194,30 +193,29 @@ doc.moveDown(2);
 export const generarExcelReceta = async (req, res) => {
     try {
       // Hacer una solicitud GET a la API para obtener la información
-      const response = await axios.get('http://localhost:3000/recipe/AllRecipe');
+      const response = await axios.get('http://localhost:3000/recipes/AllRecipe');
       const usuarioData = response.data[0]; // Obtener el primer elemento del arreglo
   
       // Crear un nuevo libro de Excel
       const workbook = new excel.Workbook();
-      const worksheet = workbook.addWorksheet('Usuarios');
+      const worksheet = workbook.addWorksheet('Recetas');
   
        // Mostrar información por consola
-       console.log('Información del Plan:');
+       console.log('Información de recetas:');
        usuarioData.forEach((recetas) => {
          console.log(`ID: ${recetas.COD_RECETA}`);
          console.log(`NOMBRE: ${recetas.NOMBRE}`);
          console.log(`DESCRIPCION: ${recetas.DESCRIPCION}`);
-         console.log(`COD_USUARIO: ${recetas.COD_USUARIO}`);
-         console.log(`CORREO: ${recetas.CORREO}`);
+         console.log(`INGREDIENTES: ${recetas.INGREDIENTES}`);
        });
   
       // Agregar encabezados de columna
       worksheet.columns = [
         { header: 'ID', key: 'COD_RECETA', width: 10 },
-        { header: 'ID usuario ', key: 'NOMBRE', width: 20 },
-        { header: 'ID plan', key: 'DESCRIPCION', width: 15 },
-        { header: 'Nombre', key: 'COD_USUARIO', width: 15 },
-        { header: 'Descripcion', key: 'CORREO', width: 100 },
+        { header: 'NOMBRE ', key: 'NOMBRE', width: 20 },
+        { header: 'DESCRIPCION', key: 'DESCRIPCION', width: 15 },
+        { header: 'INGREDIENTES', key: 'INGREDIENTES', width: 15 },
+        { header: 'ESTADO', key: 'ESTADO', width: 10 },
       ];
   
       // Agregar filas con datos
@@ -226,8 +224,8 @@ export const generarExcelReceta = async (req, res) => {
           COD_RECETA: planes.COD_RECETA,
           NOMBRE: planes.NOMBRE,
           DESCRIPCION: planes.DESCRIPCION,
-          COD_USUARIO: planes.COD_USUARIO,
-          CORREO: planes.CORREO
+          COD_USUARIO: planes.INGREDIENTES,
+          ESTADO: planes.ESTADO
         });
       });
   
