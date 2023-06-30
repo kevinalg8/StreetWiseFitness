@@ -10,7 +10,7 @@ var validateResults = function validateResults(req, res, next) {
     (0, _expressValidator.validationResult)(req)["throw"]();
     next();
   } catch (error) {
-    res.sendStatus(403);
+    res.redirect("/?error=1");
     console.log(error);
   }
 };

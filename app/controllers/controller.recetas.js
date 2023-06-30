@@ -75,7 +75,7 @@ export const getRecetaUser = async (req, res) => {
         Recetas = data[0];
       })
       .catch(err => console.error("Error en peticion: " + err));
-
+      
     res.render("recipes", {
       "recipesUser": Recetas
     });
