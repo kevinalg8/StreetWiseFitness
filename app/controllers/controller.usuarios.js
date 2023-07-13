@@ -5,6 +5,9 @@ import PDFDocument from "pdfkit-table";
 import path from 'path';
 import excel from "exceljs";
 
+/*
+Traemos los usuarios para que sean renderizados en la vista del administrador
+*/
 export const getUsuarios = async (req, res) => {
   try {
     let ruta = process.env.URL_BACKEND + '/api/users';
@@ -19,6 +22,7 @@ export const getUsuarios = async (req, res) => {
       })
       .catch(err => console.error("Error en peticion: " + err));
 
+    //Renderizamos los usuarios traidos en la vista del administrador
     res.render("admin", {
       "users": usuarios
     });
@@ -27,6 +31,10 @@ export const getUsuarios = async (req, res) => {
   }
 };
 
+
+/*
+Aqui el controlador de lo que es el login para usuarios puedan inicar sesion
+*/
 export const loginUsuario = async (req, res) => {
   try {
     let dataLogin = {
@@ -103,6 +111,9 @@ export const loginUsuario = async (req, res) => {
   }
 };
 
+/*
+Aqui el controlador para que el administrador pueda inhabilitar usuarios
+*/
 export const inhabilitar = async (req, res) => {
   let estado = req.query.estado
   if (estado == 1) {
@@ -137,12 +148,21 @@ export const inhabilitar = async (req, res) => {
   }
 };
 
+
+/*
+Aqui el controlador de la alerta del login
+*/
 export const alerta = (req,res)=>{
   let Alerta = req.query.error
   console.log(req.query.error)
   res.render("login",{Alert:Alerta})
 }
 
+
+/*
+Aqui el controlador para cerrar sesion eliminando la cookie
+activa dentro del aplicativo
+*/
 export const cerrarSesion = (req,res)=>{
   res.clearCookie("SWF");
   res.redirect("/");
