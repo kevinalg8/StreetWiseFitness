@@ -1,6 +1,6 @@
 import { check } from "express-validator";
 import { validateResults } from "../middlewares/middleware.validates.js";
-
+// Validación para el registro de usuario
 export const validateUserReg = [
     check('NOMBRES')
         .exists()
@@ -25,7 +25,7 @@ export const validateUserReg = [
     }
 
 ]
-
+// Validación para el inicio de sesión de usuario
 export const validateUserLogin = [
     check('CORREO')
         .exists()
