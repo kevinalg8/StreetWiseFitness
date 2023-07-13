@@ -22,7 +22,6 @@ export const getUsuarios = async (req, res) => {
     res.render("admin", {
       "users": usuarios
     });
-    // console.log(usuarios);
   } catch (error) {
     console.log(error);
   }

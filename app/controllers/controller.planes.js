@@ -3,45 +3,24 @@ import axios from "axios";
 import PDFDocument from "pdfkit-table";
 import excel from "exceljs";
 import path from "path";
-
 /*
-export const createPlanes = (req, res) => {
-    try {
-      let data = {
-        NOMBRE: req.body.NOMBRE,
-        DESCRIPCION: req.body.DESCRIPCION
-    }
-      let ruta = "http://localhost:3000/plan/createPlan";
-      let option = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      }
-      const resultado = fetch(ruta, option)
-        .then(response => response.json())
-        .then(data => {
-          console.log("plan creadro");
-          //planes = data[0];
-        })
-        .catch(err => console.error("Error en peticion: " + err));
-  
-      res.render("createPlan", {
-        "plans": planes
-      });
-    } catch (error) {
-      console.log(error);
-    }
-};
- */
+Los controladores son los responsables de recibir o enviar datos 
+consultando mediante peticiones HTTPS una base de datos
+*/
 
+//El "createPlanes" es la funcion encargada por su traduccion del ingles "crear clanes" 
 export const createPlanes =async(req, res) => {
       let data = {
           NOMBRE: req.body.NOMBRE,
           DESCRIPCION: req.body.DESCRIPCION,
           TELEFONO: req.body.TELEFONO
       }
+      /*
+      Aqui declaramos el metodo,donde hacemos la peticion la cual es la variable "url" 
+      dentro la siguiente variable "option" capturamos el metodo en "headers" tenemos 
+      que vamos a convertir en JSON los datos que estas pidiendo en la URL, en el body
+      se lee el los datos en JSON y podemos manipular
+      */
       let metodo = "POST";
       let url = process.env.URL_BACKEND + '/plan/createPlan';
       let option = {
@@ -59,6 +38,10 @@ export const createPlanes =async(req, res) => {
                   console.log(`Plan Creado`))
               res.redirect("createPlan")
               .catch(err => console.log(`Error: ${err}`))
+      /*
+      El resultado final es los datos ya enviados a la base datos debido a que POST es la peticion
+      donde enviamos datos a una base de datos y podemos ver los datos enviados en renderizados en la vista de ls planes
+      */
       } catch (error) {
           console.log(`error en ${error}`);
       }
@@ -76,14 +59,16 @@ export const getPlanes = async (req, res) => {
       .then(response => response.json())
       .then(data => {
         planes = data[0];
+        // Asignar el primer elemento de los datos obtenidos a la variable "planes"
       })
       .catch(err => console.error("Error en peticion: " + err));
 
     res.render("admin-plan", {
       "plans": planes
+      // Pasar los datos de los planes a la vista "admin-plan"
     });
-    console.log("hola");
   } catch (error) {
+     // Capturar y mostrar cualquier error en la consola
     console.log(error);
   }
 };
@@ -99,15 +84,19 @@ export const getAllplanes = async (req, res) => {
       .then(response => response.json())
       .then(data => {
         plan = data[0];
+        // Asignar el primer elemento de los datos obtenidos a la variable "plan"
       })
       .catch(err => console.error("Error en peticion: " + err));
 
     res.render("createPlan", {
       "planes": plan
+      // Pasar los datos del plan a la vista "createPlan"
     });
     console.log(plan);
+    // Imprimir los datos del plan en la consola
   } catch (error) {
     console.log(error);
+    // Capturar y mostrar cualquier error en la consola
   }
 };
 
@@ -122,6 +111,7 @@ export const disablePlan = async (req, res) => {
     let data = {
       ESTADO: estado
     }
+    // Imprimir los datos a enviar en la consola
     console.log(data);
     let ruta = `${process.env.URL_BACKEND}/plan/disable/${req.query.id}`;
     let option = {
@@ -129,6 +119,7 @@ export const disablePlan = async (req, res) => {
       headers: {
         "Content-Type": "application/json"
       },
+      // Convertir los datos a formato JSON y asignarlos al cuerpo de la solicitud
       body: JSON.stringify(data)
     };
     console.log(data);
@@ -139,8 +130,10 @@ export const disablePlan = async (req, res) => {
         console.log(data);
       })
       .catch(err => console.error("Error en peticion: " + err));
+    // Redirigir a la página "planes"
     res.redirect("planes")
   } catch (error) {
+      // Capturar y mostrar cualquier error en la consola
     console.log(error);
   }
 };
