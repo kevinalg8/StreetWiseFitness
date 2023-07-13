@@ -6,18 +6,21 @@ import path from "path";
 
 export const getReceta = async (req, res) => {
     try {
+      // Construir la URL de la ruta de la API para obtener todas las recetas
       let ruta =  process.env.URL_BACKEND + '/recipes/AllRecipe';
+      // Configurar las opciones para la solicitud GET
       let option = {
         method: "GET"
       };
       let Recetas = {};
+      // Realizar la solicitud GET para obtener todas las recetas
       const resultado = await fetch(ruta, option)
         .then(response => response.json())
         .then(data => {
           Recetas = data[0];
         })
         .catch(err => console.error("Error en peticion: " + err));
-  
+  // Renderizar la plantilla "adminReceta" con las recetas obtenidas
       res.render("adminReceta", {
         "recipes": Recetas
       });
@@ -31,7 +34,7 @@ export const getReceta = async (req, res) => {
 
 export const crearReceta = async (req, res) => {
   if(req.body.NOMBRE && req.body.DESCRIPCION){
-
+// Crear un objeto de datos con los campos de la receta
       let data = {
         NOMBRE: req.body.NOMBRE,
         DESCRIPCION: req.body.DESCRIPCION,
@@ -39,6 +42,7 @@ export const crearReceta = async (req, res) => {
       }
       let metodo = "POST";
       let url =  process.env.URL_BACKEND + '/recipes/rec';
+      // Configurar las opciones para la solicitud POST
       let option = {
         method: metodo,
         headers: {
@@ -48,6 +52,7 @@ export const crearReceta = async (req, res) => {
     }
 
     try {
+      // Realizar la solicitud POST para crear la receta
       const respuesta = fetch(url, option)
           .then(response => response.json())
           .then(data =>
@@ -57,6 +62,7 @@ export const crearReceta = async (req, res) => {
   } catch (error) {
       console.log(`error en ${error}`);
   }
+  // Redirigir a la página de recetas
   res.redirect("recetas")
   }
 
@@ -64,18 +70,21 @@ export const crearReceta = async (req, res) => {
 
 export const getRecetaUser = async (req, res) => {
   try {
+    // Construir la URL de la ruta de la API para obtener todas las recetas
     let ruta =  process.env.URL_BACKEND + '/recipes/AllRecipe';
+    // Configurar las opciones para la solicitud GET
     let option = {
       method: "GET"
     };
     let Recetas = {};
+    // Realizar la solicitud GET para obtener todas las recetas
     const resultado = await fetch(ruta, option)
       .then(response => response.json())
       .then(data => {
         Recetas = data[0];
       })
       .catch(err => console.error("Error en peticion: " + err));
-      
+      // Renderizar la plantilla "recipes" con las recetas obtenidas
     res.render("recipes", {
       "recipesUser": Recetas
     });
@@ -86,17 +95,21 @@ export const getRecetaUser = async (req, res) => {
 
 export const disableReceta = async (req, res) => {
     let estado = req.query.estado
+    // Cambiar el estado de la receta
     if (estado == 1) {
       estado = 0
     } else {
       estado = 1
     }
     try {
+      // Crear un objeto de datos con el nuevo estado
       let data = {
         ESTADO: estado
       }
       console.log(data);
+      // Construir la URL de la ruta de la API
       let ruta =  `${process.env.URL_BACKEND}/recipes/rec${req.query.id}`
+      // Configurar las opciones para la solicitud PATCH
       let option = {
         method: "PATCH",
         headers: {
@@ -106,12 +119,14 @@ export const disableReceta = async (req, res) => {
       };
       console.log(data);
       let estad = {};
+      // Realizar la solicitud PATCH para deshabilitar la receta
       const resultado = await fetch(ruta, option)
       .then(response => response.json())
       .then(data => {
           console.log(data);
         })
         .catch(err => console.error("Error en peticion: " + err));
+        // Redirigir a la página de recetas
       res.redirect("receta")
     } catch (error) {
       console.log(error);
