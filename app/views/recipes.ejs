@@ -9,12 +9,15 @@
     <%- include('partials/navbar.ejs'); %>
 
       <%- include('partials/nav_img.ejs'); %>
+        <!-- Sección del carrusel -->
+
         <div id="about" class="about">
           <div class="container">
             <div class="row gy-5">
               <div class="col-xl-7">
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-inner">
+                    <!-- Imágenes del carrusel -->
                     <div class="carousel-item active">
                       <img src="../img/receta1.jpg" class="w-100" alt="...">
                     </div>
@@ -34,7 +37,7 @@
                   servicio, puedes diseñar un plan personalizado en el que puedes subir el nombre, descripción y tu
                   número de teléfono de contacto. Esta función te brinda la oportunidad de promocionar tu plan y
                   permitir que cualquier persona interesada pueda comunicarse contigo fácilmente.</p>
-                <!-- Button trigger modal -->
+                  <!-- Botón para abrir el modal de creación de recetas -->
                 <button type="button" class="btn create-recipe" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   Crear Recetas
                 </button>
@@ -47,6 +50,7 @@
           <div class="cards-wrapper">
             <% recipesUser.forEach( function(elements) { %>
               <% if(elements.ESTADO == 1){ %>
+                <!-- Tarjeta de receta -->
               <div class="card bg-light-subtle mt-4 shadow">
                 <img src="../img/receta4.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -77,6 +81,7 @@
               </div>
               <div class="modal-body">
                 <form action="guardarReceta" method="POST">
+                   <!-- Campos de entrada para crear una nueva receta -->
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label" name="NOMBRE">Nombre</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="NOMBRE">

@@ -27,48 +27,45 @@
             </tr>
           </thead>
           <tbody>
-            <% plans.forEach((elements)=>{ %>
+            <% plans.forEach((elements)=>{ %> <!-- Itera sobre una lista de planes -->
               <tr>
                 <th scope="row">
-                  <%= elements.COD_PLAN %>
+                  <%= elements.COD_PLAN %> <!-- Muestra el código del plan -->
                 </th>
                 <td>
-                  <%= elements.NOMBRE %>
+                  <%= elements.NOMBRE %>  <!-- Muestra el nombre del plan -->
                 </td>
                 <td>
-                  <%= elements.DESCRIPCION %>
+                  <%= elements.DESCRIPCION %> <!-- Muestra la descripción del plan -->
                 </td>
                 <td>
-                  <%= elements.TELEFONO %>
+                  <%= elements.TELEFONO %>  <!-- Muestra el teléfono del plan -->
                 </td>
                 <td>
-                  <% if(elements.ESTADO==1){ %> activo <% }else{ %> inactivo <% } %>
+                  <% if(elements.ESTADO==1){ %> activo <% }else{ %> inactivo <% } %>  <!-- Muestra el estado del plan (activo o inactivo) -->
                 </td>
-                <form action="/admin/disable-plan?id=<%= elements.COD_PLAN %>&estado=<%= elements.ESTADO%>"
-                  method="POST">
+                <form action="/admin/disable-plan?id=<%= elements.COD_PLAN %>&estado=<%= elements.ESTADO%>" method="POST"> <!-- Formulario para deshabilitar el plan -->
                   <td>
-                    <% if(elements.ESTADO==1){ %>
-                      <input value="Inhabilitar" class="btn btn-danger" type="submit">
-
-                      </input>
-                      <% }else{ %>
-                        <input class="btn btn-success" type="submit" value="Habilitar"> </input>
+                    <% if(elements.ESTADO==1){ %> <!-- Si el plan está activo -->
+                      <input value="Inhabilitar" class="btn btn-danger" type="submit"></input><!-- Botón para inhabilitar el plan -->
+                      <% }else{ %>  <!-- Si el plan está inactivo -->
+                        <input class="btn btn-success" type="submit" value="Habilitar"> </input><!-- Botón para habilitar el plan -->
                         <% } %>
                   </td>
                   </form>
               </tr>
 
               <% }) %>
-                <form id="generarForm" method="POST" action="/admin/generarPdfPlan">
+                <form id="generarForm" method="POST" action="/admin/generarPdfPlan"><!-- Formulario para generar un PDF del plan -->
                   <input type="hidden" name="datos">
                   <button class="btn btn-danger" type="submit">
-                    <i>PdsadDF</i>
+                    <i>PdsadDF</i><!-- Texto o ícono para el botón de generar PDF -->
                   </button>
                 </form>
-                <form id="generarForm" method="POST" action="/admin/generarExcelPlan">
+                <form id="generarForm" method="POST" action="/admin/generarExcelPlan">  <!-- Formulario para generar un Excel del plan -->
                   <input type="hidden" name="datos">
                   <button class="btn btn-success" type="submit">
-                    <i>EXCEL</i>
+                    <i>EXCEL</i><!-- Texto o ícono para el botón de generar Excel -->
                   </button>
                 </form>
           </tbody>

@@ -6,11 +6,11 @@
 <title>Inicio</title>
 
 <body>
-  <% if(rol === 1 || rol === 2){ %>
-    <%- include('partials/navbar.ejs'); %>
+  <% if(rol === 1 || rol === 2){ %> <!-- Si el rol es 1 o 2, mostrar la barra de navegación -->
+    <%- include('partials/navbar.ejs'); %>  <!-- Incluir un archivo parcial llamado 'navbar.ejs' -->
   <% } %>
-    <%- include('partials/nav_img.ejs'); %>
-  <!-- Services -->
+    <%- include('partials/nav_img.ejs'); %> <!-- Incluir un archivo parcial llamado 'nav_img.ejs' -->
+  <!-- Servicios -->
     <div id="about" class="about">
       <div class="container">
         <div class="row gy-5">
@@ -20,7 +20,6 @@
             <p>Únete a la plataforma que conecta usuarios y entrenadores en una comunidad enérgica. A través de nuestro servidor de Discord, interactúa, comparte recetas saludables y contactar entrenadores. Descubre el poder de la conexión en tu viaje hacia una vida activa y saludable. ¡Con StreetWiseFitness, transforma tu bienestar hoy mismo!</p>
             <a href="/RegistroUsuario" class="read-more"><span>Registrarme</span><i class="bi bi-arrow-right"></i></a>
           </div>
-          <!-- Service Boxes -->
           <div class="col-xl-7">
             <div class="row gy-4">
               <div class="col-md-6">
@@ -44,13 +43,12 @@
                   <p>Nuestra plataforma ofrece planes creados por entrenadores que se adaptan a tus objetivos y necesidades individuales. </p>
                 </div>
               </div>
-              <!-- End Service Boxes -->
             </div>
           </div>
         </div>
       </div>
-    </div><!-- End Services -->
-  <!-- Plans -->
+    </div><!-- Cierra Servicios -->
+  <!-- Planes -->
   <div class="splash">
     <div id="why-us" class="why-us">
       <div class="container">

@@ -10,77 +10,79 @@
       <%- include('./partials/nav_img.ejs'); %>
         <div id="about" class="about">
           <div class="container">
-            <a target="_blank" href="<%= seller1.permalink %>"><h3><%= seller1.nickname %></h3></a> 
+            <a target="_blank" href="<%= seller1.permalink %>"><h3><%= seller1.nickname %></h3></a> <!-- Enlace a la página del vendedor -->
             <div class="card-group cards-wrapper">
-              <% produc1.forEach( function(data1) { %>
+              <% produc1.forEach( function(data1) { %>  <!-- Iterar sobre los productos de seller1 -->
                 <div class="card" style="width: 20rem">
-                  <img src="<%= data1.thumbnail %>" class="card-img-top" alt="...">
+                  <img src="<%= data1.thumbnail %>" class="card-img-top" alt="..."> <!-- Imagen del producto -->
                   <div class="card-body">
-                    <h5 class="card-title"><%= data1.title %></h5>
-                    <p class="card-text"><%= data1.price %></p>
+                    <h5 class="card-title"><%= data1.title %></h5>  <!-- Título del producto -->
+                    <p class="card-text"><%= data1.price %></p> <!-- Precio del producto -->
                   </div>
                   <div class="card-footer">
-                    <a target="_blank" href="<%= data1.permalink %>" class="btn btn-primary">Comprar</a>
+                    <a target="_blank" href="<%= data1.permalink %>" class="btn btn-primary">Comprar</a>  <!-- Enlace para comprar el producto -->
                   </div>
                 </div>
-                <% }); %>
+                <% }); %> <!-- Finalizar el bucle 'forEach' -->
             </div>
           </div>
         </div>
         <div id="about" class="about">
           <div class="container">
-            <a target="_blank" href="<%= seller2.permalink %>"><h3><%= seller2.nickname %></h3></a> 
+            <a target="_blank" href="<%= seller2.permalink %>"><h3><%= seller2.nickname %></h3></a> <!-- Enlace a la página del vendedor -->
             <div class="card-group cards-wrapper">
               <% produc2.forEach( function(data2) { %>
                 <div class="card" style="width: 20rem">
-                  <img src="<%= data2.thumbnail %>" class="card-img-top" alt="...">
+                  <img src="<%= data2.thumbnail %>" class="card-img-top" alt="..."> <!-- Imagen del producto -->
                   <div class="card-body">
-                    <h5 class="card-title"><%= data2.title %></h5>
-                    <p class="card-text"><%= data2.price %></p>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= data2.title %></h5>  <!-- Título del producto -->
+                    <p class="card-text"><%= data2.price %></p> <!-- Precio del producto -->
                   </div>
                   <div class="card-footer">
-                    <a target="_blank" href="<%= data2.permalink %>" class="btn btn-primary">Comprar</a>
+                    <a target="_blank" href="<%= data2.permalink %>" class="btn btn-primary">Comprar</a>  <!-- Enlace para comprar el producto -->
                   </div>
                 </div>
-                <% }); %>
-            </div>
+                <% }); %> <!-- Finalizar el bucle 'forEach' -->
+            </div>  
           </div>
         </div>
         <div id="about" class="about">
           <div class="container">
-            <a target="_blank" href="<%= seller3.permalink %>"><h3><%= seller3.nickname %></h3></a> 
+            <a target="_blank" href="<%= seller3.permalink %>"><h3><%= seller3.nickname %></h3></a> <!-- Enlace a la página del vendedor -->
             <div class="card-group cards-wrapper">
               <% produc3.forEach( function(data3) { %>
                 <div class="card" style="width: 20rem">
-                  <img src="<%= data3.thumbnail %>" class="card-img-top" alt="...">
+                  <img src="<%= data3.thumbnail %>" class="card-img-top" alt="..."> <!-- Imagen del producto -->
                   <div class="card-body">
-                    <h5 class="card-title"><%= data3.title %></h5>
-                    <p class="card-text"><%= data3.price %></p>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= data3.title %></h5>  <!-- Título del producto -->
+                    <p class="card-text"><%= data3.price %></p> <!-- Precio del producto -->
                   </div>
                   <div class="card-footer">
-                    <a target="_blank" href="<%= data3.permalink %>" class="btn btn-primary">Comprar</a>
+                    <a target="_blank" href="<%= data3.permalink %>" class="btn btn-primary">Comprar</a>  <!-- Enlace para comprar el producto -->
                   </div>
                 </div>
-                <% }); %>
+                <% }); %> <!-- Finalizar el bucle 'forEach' -->
             </div>
           </div>
         </div>
         <div id="about" class="about">
           <div class="container">
-            <a target="_blank" href="<%= seller4.permalink %>"><h3><%= seller4.nickname %></h3></a> 
+            <a target="_blank" href="<%= seller4.permalink %>"><h3><%= seller4.nickname %></h3></a> <!-- Enlace a la página del vendedor -->
             <div class="card-group cards-wrapper">
               <% produc4.forEach( function(data4) { %>
                 <div class="card" style="width: 20rem">
                   <img src="<%= data4.thumbnail %>" class="card-img-top" alt="...">
                   <div class="card-body">
-                    <h5 class="card-title"><%= data4.title %></h5>
-                    <p class="card-text"><%= data4.price %></p>
+                    <h5 class="card-title"><%= data4.title %></h5>  <!-- Título del producto -->
+                    <p class="card-text"><%= data4.price %></p> <!-- Precio del producto -->
                   </div>
                   <div class="card-footer">
-                    <a target="_blank" href="<%= data4.permalink %>" class="btn btn-primary">Comprar</a>
+                    <a target="_blank" href="<%= data4.permalink %>" class="btn btn-primary">Comprar</a>  <!-- Enlace para comprar el producto -->
                   </div>
                 </div>
-                <% }); %>
+                <% }); %> <!-- Finalizar el bucle 'forEach' -->
             </div>
           </div>
         </div>

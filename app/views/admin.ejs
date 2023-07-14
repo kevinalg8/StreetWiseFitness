@@ -9,7 +9,7 @@
     <div class="container">
       <h2 class="mb-5"><a href="/admin/">Usuarios /</a><a href="/admin/planes">Planes / </a> <a href="/admin/receta">Recetas</a>
         <a href="/admin/cerrarSesion" class="btn btn-danger btn-out">         
-          <i class="bi bi-box-arrow-in-right"></i>
+          <i class="bi bi-box-arrow-in-right"></i><!-- Icono de flecha derecha -->
         </a>
       </h2>
       <div class="table-responsive">
@@ -27,73 +27,57 @@
             </tr>
           </thead>
         <tbody>
-          <% users.forEach((elements)=>{ %>
-            <form action="/admin/disable-user?id=<%= elements.COD_USUARIO %>&estado=<%= elements.ESTADO%>" method="POST">
+          <% users.forEach((elements)=>{ %> <!-- Iterar sobre una variable llamada 'users' y su contenido -->
+            <form action="/admin/disable-user?id=<%= elements.COD_USUARIO %>&estado=<%= elements.ESTADO%>" method="POST"> <!-- Formulario para enviar datos al servidor -->
               <tr>
                 <th scope="row">
-                  <%= elements.COD_USUARIO %>
+                  <%= elements.COD_USUARIO %> <!-- Mostrar el valor de 'COD_USUARIO' -->
                 </th>
                 <td>
-                  <%= elements.NOMBRES %>
+                  <%= elements.NOMBRES %> <!-- Mostrar el valor de 'NOMBRES' -->
                 </td>
                 <td>
-                  <%= elements.APELLIDOS %>
+                  <%= elements.APELLIDOS %> <!-- Mostrar el valor de 'APELLIDOS' -->
                 </td>
                 <td>
-                  <% if(elements.ESTADO==1){ %> activo <% }else{ %> inactivo <% } %>
+                  <% if(elements.ESTADO==1){ %> activo <% }else{ %> inactivo <% } %>  <!-- Mostrar "activo" si 'ESTADO' es 1, de lo contrario, mostrar "inactivo" -->
                 </td>
                 <td class="text-center">
-                  <%= elements.FECHA_NACIMIENTO%>
+                  <%= elements.FECHA_NACIMIENTO%> <!-- Mostrar el valor de 'FECHA_NACIMIENTO' -->
                 </td>
                 <td>
-                  <%= elements.CELULAR%>
+                  <%= elements.CELULAR%>  <!-- Mostrar el valor de 'CELULAR' -->
                 </td>
                 <td>
-                  <% if(elements.COD_ROL==1){ %> Usuario <% } else if(elements.COD_ROL==2){ %> Entrenador <% } else{ %>
-                        Administrador <% } %>
-  
+                  <% if(elements.COD_ROL==1){ %> Usuario <% } else if(elements.COD_ROL==2){ %> Entrenador <% } else{ %>Administrador <% } %>  <!-- Mostrar "Usuario" si 'COD_ROL' es 1, "Entrenador" si es 2, de lo contrario, mostrar "Administrador" -->
                 </td>
                 <td>
-                  <% if(elements.ESTADO==1){ %>
-                    <input value="Inhabilitar" class="btn btn-danger" type="submit">
-                      
-                    </input>
-                    <% }else{ %>
+                  <% if(elements.ESTADO==1){ %> <!-- Si 'ESTADO' es 1, mostrar el botón "Inhabilitar" -->
+                    <input value="Inhabilitar" class="btn btn-danger" type="submit"></input>
+                    <% }else{ %>  <!-- De lo contrario, mostrar el botón "Habilitar" -->
                       <input class="btn btn-success" type="submit" value="Habilitar">  </input>
                       <% } %>
                 </td>
               </tr>
             </form>
-              <% }) %>
+              <% }) %>  <!-- Finalizar el bucle 'forEach' -->
               <form id="generarForm" method="POST" action="/admin/generarPdf">
-                <input type="hidden" name="datos">
+                <input type="hidden" name="datos">  <!-- Campo oculto para enviar datos al servidor -->
                 <button class="btn btn-danger" type="submit">
-                  <i>PDF</i>
+                  <i>PDF</i>  <!-- Icono de descarga en formato PDF -->
                 </button>
               </form>
               <form id="generarForm" method="POST" action="/admin/generarExcel">
-                <input type="hidden" name="datos">
+                <input type="hidden" name="datos">  <!-- Campo oculto para enviar datos al servidor -->
                 <button class="btn btn-success" type="submit">
-                  <i>Excel</i>
+                  <i>Excel</i>  <!-- Icono de descarga en formato Excel -->
                 </button>
               </form>
-              
           </tbody>
         </table>
       </div>
     </div>
   </div>
-
-
-  <!-- <script>
-    function setAction(formato) {
-  const form = document.getElementById('generarForm');
-  if (formato === 'pdf') {
-    form.action = '/generarpdf';
-  }
-}
-  </script> -->
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>

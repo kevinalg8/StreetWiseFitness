@@ -5,17 +5,19 @@
     <title>Configuraciones</title>
 </head>
 <body>
-    <form method="POST" action="actualizar">
+    <form method="POST" action="actualizar">  <!-- Formulario para enviar datos al servidor con método POST y acción "actualizar" -->
         <div class="form-group row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+          <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>  <!-- Etiqueta para el campo "Email" -->
           <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%=user.CORREO%>">
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%=user.CORREO%>"> <!-- Campo de texto solo lectura con el valor del correo del usuario -->
+          </div>
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+          <label for="inputPassword" class="col-sm-2 col-form-label">Password</label> <!-- Etiqueta para el campo "Password" -->
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">  <!-- Campo de contraseña -->
+          </div>
           </div>
         </div>
       </form>
